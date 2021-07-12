@@ -1,0 +1,111 @@
+<div class="header bg-gradient-danger py-7 py-lg-8">
+  <div class="container">
+    <div class="header-body text-center mb-7">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-6">
+          <h1 class="text-white">Welcome!</h1>
+          <p class="text-lead text-light">Please enter your username and password </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="separator separator-bottom separator-skew zindex-100">
+    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container mt--8 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-5 col-md-7">
+      <div class="card shadow border-0">
+        <div class="card-body px-lg-5 py-lg-5">
+          <div class="text-center text-muted mb-4">
+            <small>sign in with credentials</small>
+          </div>
+          <form #form="ngForm" name="campaignForm" (submit)="OnSubmit(form,'doctor/LoginOfTheDoctor')">
+            <div class="form-group mb-3">
+              <label for="username">Email</label>
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                </div>
+                <input class="form-control myinput" placeholder="Email" type="email" name="email" #email="ngModel" value=""
+                  [(ngModel)]="service.Login.email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                <!-- name="email" #email="ngModel" value = "" [(ngModel)] = "Doctor.email"> -->
+              </div>
+              <div *ngIf="form.submitted && email.errors?.required" class="text-sm text-red pl-2 pr-2">
+                Please enter Email Address</div>
+              <div *ngIf="form.submitted && email.errors?.pattern" class="text-sm text-red pl-2 pr-2">
+                Enter a Valid Email Address</div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend inputgp">
+                  <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                </div>
+                <input class="form-control myinput" placeholder="Password" type="password" name="password" #password="ngModel"
+                  value="" [(ngModel)]="service.Login.password" #password="ngModel" required>
+                <!-- name="password" #password="ngModel"  value = "" [(ngModel)] = "Doctor.password"> -->
+              </div>
+              <div *ngIf="form.submitted && password.errors?.required" class="text-sm text-danger pl-2 pr-2"> Password
+                is Required !!</div>
+            </div>
+
+            <!-- <h1 *ngIf="flag === false " class="text-danger form-control-label"
+              style="font-family: 'Times New Roman', Times, serif;"><strong> Wrong Email or Password! </strong></h1> -->
+            <div class="custom-control custom-control-alternative custom-checkbox">
+              <input class="custom-control-input" id=" customCheckLogin" type="checkbox" name="RememberMe"
+                #RememberMe="ngModel" value="" [(ngModel)]="service.Login.RememberMe" required>
+
+              <button href="/#/dash/table-list" type="submit" class="btn btn-sm btn-primary">Sign in</button>
+
+
+              <!-- <label class="custom-control-label" for=" customCheckLogin">
+                <span class="text-muted" >Remember me</span>
+              </label> -->
+            </div>
+            <div class="text-center">
+              <button class="btn btn-primary my-4" routerLinkActive="active" [routerLink]="['/dash']" type="submit">Sign
+                in</button>
+              <!-- <button href="/#/dash/table-list" type="submit" class="btn btn-sm btn-primary"  >Sign in</button> -->
+              <!-- <div *ngIf="flag === false " class="p-3 mb-2 bg-danger text-white" class="text-danger">  Wrong Email or Password! </div> -->
+              <!-- <div *ngIf="flag === false " class="text-danger form-control-label"> Wrong Email or Password! </div> -->
+
+
+              <!--- <button  type="submit" class="btn btn-sm btn-primary" >Sign in</button>-->
+
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <!-- <div class="col-6">
+          <a href="javascript:void(0)" class="text-light"><small>Forgot password?</small></a>
+        </div>
+        <div class="col-6 text-right">
+          <a href="javascript:void(0)" class="text-light"><small>Create new account</small></a>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #content let-modal>
+
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">PDF</h4>
+
+  </div>
+  <div class="modal-body">
+    <p>Username or password is incorrect
+    </p>
+
+
+
+
+  </div>
+
+
+</ng-template>

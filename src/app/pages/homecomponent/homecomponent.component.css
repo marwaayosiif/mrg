@@ -1,0 +1,30 @@
+.body{
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1rem;
+  background-color: transparent;
+  font-size: 60px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.card-pricing {
+  /* create a custom class so you 
+     do not run into specificity issues 
+     against bootstraps styles
+     which tends to work better than using !important 
+     (future you will thank you later)*/
+  
+    background-color: transparent;
+    font-size: 60px;
+  }
+
+  /* #sec2{
+    background: linear-gradient(87deg, #b4cce1 0, adjust-hue(#6adaff, 25%) 100%);
+  } */
+  body {
+    background: linear-gradient(87deg, #b4cce1 0, adjust-hue(#6adaff, 25%) 100%);
+  }
+
+navbar{
+  background: linear-gradient(87deg, #b4cce1 0, adjust-hue(#6adaff, 25%) 100%);
+}

@@ -1,0 +1,96 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+  style="min-height: 300px; background-image: url(assets/img/theme/patient-cover.jpg); background-size: cover; background-position: center top;">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <!-- Header container -->
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+
+
+        <!-- <<<<<<< HEAD -->
+        <!-----------------------------------------------begin tabs------------------------------------------------------------------------------------------------->
+        <form class="form-inline">
+          <div class="container">
+
+            <app-tabset-selectbyid></app-tabset-selectbyid>
+
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-----------------------------------------------begin gallery------------------------------------------------------------------------------------------------->
+
+    <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+      <div class="card card-profile shadow" style="background-color: #fff;">
+        <div class="card-header border-0" style="background-color: #fff">
+          <h1 class="display-4 ">Images</h1>
+          <hr>
+        </div>
+        <div class="container-fluid">
+          <!-- <button *ngIf="!createProduct" (click)="onCreateProduct()" class="btn btn-link float-right" >Add New Image</button>
+          <app-product *ngIf="createProduct" (close)="onProductSubmit($event)"></app-product> -->
+
+          <!-- <div>
+              <img *ngFor="let url of urls" src={{url}} class="img" width="180">
+             
+            </div>
+            <input type="file" #image value="Add to favorites" multiple (change)="detectFiles($event)"> -->
+          <!-- *ngFor="let url of urls" src={{url}} -->
+          <form #imageForm=ngForm (ngSubmit)="OnSubmitImage(Image)">
+            <div class="row ui-content" id="pageone" data-role="main">
+              <div *ngFor="let url of urls ; let i = index" class="col-md-6 img-container">
+                <a (click) = "show(url)">
+                  <img  style="float: left" [src]="url" width="180" ></a>           
+                <span class="delete-entry" style="cursor: pointer;"(click)="deleteImage(url,i)">x</span>
+
+
+              </div>
+            </div>
+            <input style="display: none;" type="file" class="choosefile" #Image value="Add Pictures" multiple (change)="handleFileInput($event)" >
+            <button type="button" class="btn btn-primary btn-sm " (click)="Image.click()"><strong> Pick Image</strong> </button>
+            
+
+            <button class="btn btn-primary btn-sm btn-submit " type="submit" id="right" style="color:white;">
+              Add
+            </button>
+            <!-- <button type = "submit" class="btn-large btn-submit">Submit</button> -->
+          </form>
+          <!-- <div class="Upcard" >
+
+                <img [src]="url"><span class="delete-entry" style="cursor: pointer;" (click)="deleteImage(url)">x</span>
+            </div> -->
+
+        </div>
+
+
+
+
+        <!-- <p>
+          <button class="btn btn-link float-right" (click)="t.select('select image')">Add new Image</button>
+        </p> -->
+
+      </div>
+    </div>
+  </div>
+</div>
+<div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Image preview</h4>
+      </div> -->
+      <div class="modal-body">
+          <a>
+            <img  style="float: left" [src]="myurl" width="494px" height="425px" ></a>           
+        <!-- <img [src]="url" id="imagepreview" style="width: 425px; height: 425px;" > -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" (click) = "hide()">Close</button>
+      </div>
+    </div>
+  </div>
+  </div>
