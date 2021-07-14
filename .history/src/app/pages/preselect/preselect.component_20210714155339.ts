@@ -65,7 +65,9 @@ export class PreselectComponent implements OnInit {
     console.log(this.message)
   }
 
-  constructor(public service: ArbProjectService, private http: HttpClient, private sanitizer: DomSanitizer) {}
+  constructor(public service: ArbProjectService, private http: HttpClient, private sanitizer: DomSanitizer) {
+    
+   }
 
   ngOnInit(): void {
     console.log(this.service.examDataId);

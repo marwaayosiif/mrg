@@ -21,19 +21,23 @@ import { RouterOutlet, Router, ActivationStart } from '@angular/router';
   templateUrl: './patient.component.html',
   styleUrls: ['./patient.component.scss']
 })
-
 export class PatientComponent implements OnInit {
+
+
   constructor(public service: ArbProjectService, private http: HttpClient) { }
+
   list: ExamData[];
   public datasets: any;
   public data: any;
   public salesChart;
   public clicked: boolean = true;
   public clicked1: boolean = false;
+
   ExamData: ExamData = new ExamData();
   hey: ExamData = new ExamData
 
   ngOnInit() {
+
     if (this.service.ExamData.id !== 0) {
       this.service.getOne(this.service.ExamData.id, 'ExamData').subscribe(res =>
         this.service.ExamData = res as ExamData)

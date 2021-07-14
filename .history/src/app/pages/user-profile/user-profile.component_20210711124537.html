@@ -77,12 +77,13 @@
                       <label class="form-control-label" for="input-username">Name</label>
                       <div class="input-group input-group-alternative">
                         <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <span class="input-group-text"><i
+                                    class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" id="input-username" class="form-control form-control-alternative"
-                          placeholder="Username" value="" name="name" #name="ngModel" [(ngModel)]="service.Doctor.name"
-                          required>
-                      </div>
+                      <input type="text" id="input-username" class="form-control form-control-alternative"
+                        placeholder="Username" value="" name="name" #name="ngModel" [(ngModel)]="service.Doctor.name"
+                        required>
+                        </div>
                       <div *ngIf="form.submitted && name.errors?.required" class="text-sm text-red pl-2 pr-2">
                         Enter Your Name</div>
                     </div>
@@ -93,12 +94,12 @@
                       <label class="form-control-label" for="input-email">Email address</label>
                       <div class="input-group input-group-alternative">
                         <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                            <span class="input-group-text"><i
+                                    class="ni ni-email-83"></i></span>
                         </div>
-                        <input type="email" id="input-email" class="form-control form-control-alternative"
-                          placeholder="Email@gmail.com" value="" name="email" #email="ngModel"
-                          [(ngModel)]="service.Doctor.email"
-                           pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                      <input type="email" id="input-email" class="form-control form-control-alternative"
+                        placeholder="Email@gmail.com" value="" name="email" #email="ngModel"
+                        [(ngModel)]="service.Doctor.email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
                       </div>
                       <div *ngIf="form.submitted && email.errors?.required" class="text-sm text-red pl-2 pr-2">
                         Enter Email Address</div>
@@ -112,14 +113,15 @@
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-first-name">Mobile
                         Number</label>
-                      <div class="input-group input-group-alternative">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
+                        <div class="input-group input-group-alternative">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i
+                                      class="ni ni-mobile-button"></i></span>
+                          </div>
+                      <input type="text" id="input-mobilenumber" class="form-control form-control-alternative"
+                        placeholder="Mobile Number" name="mobilePhone" #mobilePhone="ngModel"
+                        [(ngModel)]="service.Doctor.mobilePhone"  pattern = "^\d{11}$" required>
                         </div>
-                        <input type="text" id="input-mobilenumber" class="form-control form-control-alternative"
-                          placeholder="Mobile Number" name="mobilePhone" #mobilePhone="ngModel"
-                          [(ngModel)]="service.Doctor.mobilePhone" pattern="^\d{11}$" required>
-                      </div>
                       <div *ngIf="form.submitted && mobilePhone.errors?.required" class="text-sm text-red pl-2 pr-2">
                         Enter Mobile Number</div>
                       <div *ngIf="form.submitted && mobilePhone.errors?.pattern" class="text-sm text-red pl-2 pr-2">
@@ -132,12 +134,13 @@
                       </label>
                       <div class="input-group input-group-alternative">
                         <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-user-md"></i></span>
+                            <span class="input-group-text"><i
+                                    class="fas fa-user-md"></i></span>
                         </div>
-                        <input type="text" id="input-specialization" class="form-control form-control-alternative"
-                          placeholder="Specialization " name="specialization" #specialization="ngModel"
-                          [(ngModel)]="service.Doctor.specialization">
-                      </div>
+                      <input type="text" id="input-specialization" class="form-control form-control-alternative"
+                        placeholder="Specialization " name="specialization" #specialization="ngModel"
+                        [(ngModel)]="service.Doctor.specialization">
+                    </div>
                     </div>
                   </div>
                 </div>
@@ -152,13 +155,13 @@
                       <label class="form-control-label" for="input-location">Location</label>
                       <div class="input-group input-group-alternative">
                         <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ni ni-square-pin"></i></span>
+                            <span class="input-group-text"><i
+                                    class="ni ni-square-pin"></i></span>
                         </div>
-                        <input id="input-location" class="form-control form-control-alternative"
-                          placeholder="Home Address" name="location" #location="ngModel"
-                          [(ngModel)]="service.Doctor.location" value="15 may Cairo, nr. 2 Bl 1, Sc 1, Ap 09"
-                          type="text">
-                      </div>
+                      <input id="input-location" class="form-control form-control-alternative"
+                        placeholder="Home Address" name="location" #location="ngModel"
+                        [(ngModel)]="service.Doctor.location" value="15 may Cairo, nr. 2 Bl 1, Sc 1, Ap 09" type="text">
+                    </div>
                     </div>
                   </div>
                 </div>
@@ -168,11 +171,12 @@
                       <label class="form-control-label" for="input-city">City</label>
                       <div class="input-group input-group-alternative">
                         <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-city"></i></span>
+                            <span class="input-group-text"><i
+                                    class="fas fa-city"></i></span>
                         </div>
-                        <input type="text" id="input-city" class="form-control form-control-alternative" name="city"
-                          #city="ngModel" [(ngModel)]="service.Doctor.city" placeholder="City" value="Cairo">
-                      </div>
+                      <input type="text" id="input-city" class="form-control form-control-alternative" name="city"
+                        #city="ngModel" [(ngModel)]="service.Doctor.city" placeholder="City" value="Cairo">
+                    </div>
                     </div>
                   </div>
                   <div class="col-lg-6">
@@ -180,12 +184,12 @@
                       <label class="form-control-label" for="input-country">Country</label>
                       <div class="input-group input-group-alternative">
                         <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span>
+                            <span class="input-group-text"><i
+                                    class="fas fa-map-marked-alt"></i></span>
                         </div>
-                        <input type="text" id="input-country" class="form-control form-control-alternative"
-                          name="country" #country="ngModel" [(ngModel)]="service.Doctor.country" placeholder="Country"
-                          value="Egypt">
-                      </div>
+                      <input type="text" id="input-country" class="form-control form-control-alternative" name="country"
+                        #country="ngModel" [(ngModel)]="service.Doctor.country" placeholder="Country" value="Egypt">
+                    </div>
                     </div>
                   </div>
                 </div>

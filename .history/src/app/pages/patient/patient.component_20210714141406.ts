@@ -21,7 +21,6 @@ import { RouterOutlet, Router, ActivationStart } from '@angular/router';
   templateUrl: './patient.component.html',
   styleUrls: ['./patient.component.scss']
 })
-
 export class PatientComponent implements OnInit {
   constructor(public service: ArbProjectService, private http: HttpClient) { }
   list: ExamData[];
@@ -30,6 +29,7 @@ export class PatientComponent implements OnInit {
   public salesChart;
   public clicked: boolean = true;
   public clicked1: boolean = false;
+
   ExamData: ExamData = new ExamData();
   hey: ExamData = new ExamData
 

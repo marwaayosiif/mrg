@@ -17,8 +17,8 @@ import {
   templateUrl: './preselect.component.html',
   styleUrls: ['./preselect.component.scss']
 })
-
 export class PreselectComponent implements OnInit {
+
   tabs = ['General Information', 'Clinical Information', 'Final Assesment'];
   selected = new FormControl(0);
   tabtitle: string = '';
@@ -40,13 +40,11 @@ export class PreselectComponent implements OnInit {
   title = 'angulartoastr';
   showModal: boolean;
   myurl:string;
-
-
-
   show(url)
   {
     this.showModal = true; // Show-Hide Modal Check
     this.myurl = url;
+
     
   }
   //Bootstrap Modal Close event
@@ -65,7 +63,9 @@ export class PreselectComponent implements OnInit {
     console.log(this.message)
   }
 
-  constructor(public service: ArbProjectService, private http: HttpClient, private sanitizer: DomSanitizer) {}
+  constructor(public service: ArbProjectService, private http: HttpClient, private sanitizer: DomSanitizer) {
+    
+   }
 
   ngOnInit(): void {
     console.log(this.service.examDataId);

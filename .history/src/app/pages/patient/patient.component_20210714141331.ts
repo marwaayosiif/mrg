@@ -21,19 +21,23 @@ import { RouterOutlet, Router, ActivationStart } from '@angular/router';
   templateUrl: './patient.component.html',
   styleUrls: ['./patient.component.scss']
 })
-
 export class PatientComponent implements OnInit {
+
+
   constructor(public service: ArbProjectService, private http: HttpClient) { }
+
   list: ExamData[];
   public datasets: any;
   public data: any;
   public salesChart;
   public clicked: boolean = true;
   public clicked1: boolean = false;
+
   ExamData: ExamData = new ExamData();
   hey: ExamData = new ExamData
 
   ngOnInit() {
+
     if (this.service.ExamData.id !== 0) {
       this.service.getOne(this.service.ExamData.id, 'ExamData').subscribe(res =>
         this.service.ExamData = res as ExamData)
@@ -45,13 +49,18 @@ export class PatientComponent implements OnInit {
     ];
     this.data = this.datasets[0];
     var chartOrders = document.getElementById('chart-orders');
+
     parseOptions(Chart, chartOptions());
+
+
     var ordersChart = new Chart(chartOrders, {
       type: 'bar',
       options: chartExample2.options,
       data: chartExample2.data
     });
+
     var chartSales = document.getElementById('chart-sales');
+
     this.salesChart = new Chart(chartSales, {
       type: 'line',
       options: chartExample1.options,

@@ -52,10 +52,8 @@
 
               </div>
             </div>
-
             <input style="display: none;" type="file" class="choosefile" #Image 
             value="Add Pictures" multiple (change)="handleFileInput($event)">
-
             <button type="button" class="btn btn-primary btn-sm " 
             (click)="Image.click()"><strong> Pick Image</strong>
             </button>
@@ -85,14 +83,17 @@
     </div>
   </div>
 </div>
-
 <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog"
   aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Image preview</h4>
+      </div> -->
       <div class="modal-body">
         <a>
           <img style="float: left" [src]="myurl" width="494px" height="425px"></a>
+        <!-- <img [src]="url" id="imagepreview" style="width: 425px; height: 425px;" > -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" (click)="hide()">Close</button>

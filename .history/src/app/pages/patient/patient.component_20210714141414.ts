@@ -21,7 +21,6 @@ import { RouterOutlet, Router, ActivationStart } from '@angular/router';
   templateUrl: './patient.component.html',
   styleUrls: ['./patient.component.scss']
 })
-
 export class PatientComponent implements OnInit {
   constructor(public service: ArbProjectService, private http: HttpClient) { }
   list: ExamData[];

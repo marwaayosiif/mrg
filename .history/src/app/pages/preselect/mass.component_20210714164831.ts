@@ -33,6 +33,7 @@ export class MassComponent {
   addTab() {
     console.log("tabs");
     console.log("index", this.service.index);
+
     this.service.Patient.clinicalInfo.massSpecifications[this.service.index] = new massSpecifications();
     this.service.Patient.clinicalInfo.massSpecifications[this.service.index].clinicalInfoId = this.service.Patient.id;
     this.service.tabs.push('Mass' + (this.service.index + 1));
@@ -41,9 +42,11 @@ export class MassComponent {
   }
 
   removeTab() {
+
     this.service.index = this.service.index - 1;
     this.service.Patient.clinicalInfo.massSpecifications.pop();
     this.service.tabs.pop();
+
   }
 }
 

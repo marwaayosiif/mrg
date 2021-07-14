@@ -12,7 +12,6 @@
 
         <!-- <<<<<<< HEAD -->
         <!-----------------------------------------------begin tabs------------------------------------------------------------------------------------------------->
-
         <form class="form-inline">
           <div class="container">
 
@@ -20,7 +19,6 @@
 
           </div>
         </form>
-
       </div>
     </div>
 
@@ -45,21 +43,16 @@
           <form #imageForm=ngForm (ngSubmit)="OnSubmitImage(Image)">
             <div class="row ">
               <div *ngFor="let url of urls ; let i = index" class="col-md-6 img-container">
-                <a (click)="show(url)">
-                  <img style="float: left" [src]="url" width="180"></a>
-                <span class="delete-entry" style="cursor: pointer;" (click)="deleteImage(url,i)">x</span>
+                <a (click) = "show(url)">
+                  <img  style="float: left" [src]="url" width="180" ></a>           
+                <span class="delete-entry" style="cursor: pointer;"(click)="deleteImage(url,i)">x</span>
 
 
               </div>
             </div>
-
-            <input style="display: none;" type="file" class="choosefile" #Image 
-            value="Add Pictures" multiple (change)="handleFileInput($event)">
-
-            <button type="button" class="btn btn-primary btn-sm " 
-            (click)="Image.click()"><strong> Pick Image</strong>
-            </button>
-
+            <input style="display: none;" type="file" class="choosefile" #Image value="Add Pictures" multiple (change)="handleFileInput($event)" >
+            <button type="button" class="btn btn-primary btn-sm " (click)="Image.click()"><strong> Pick Image</strong> </button>
+            
 
             <button class="btn btn-primary btn-sm btn-submit " type="submit" id="right" style="color:white;">
               Add
@@ -85,18 +78,20 @@
     </div>
   </div>
 </div>
-
-<div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog"
-  aria-labelledby="myModalLabel" aria-hidden="true">
+<div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Image preview</h4>
+      </div> -->
       <div class="modal-body">
-        <a>
-          <img style="float: left" [src]="myurl" width="494px" height="425px"></a>
+          <a>
+            <img  style="float: left" [src]="myurl" width="494px" height="425px" ></a>           
+        <!-- <img [src]="url" id="imagepreview" style="width: 425px; height: 425px;" > -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" (click)="hide()">Close</button>
+        <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" (click) = "hide()">Close</button>
       </div>
     </div>
   </div>
-</div>
+  </div>

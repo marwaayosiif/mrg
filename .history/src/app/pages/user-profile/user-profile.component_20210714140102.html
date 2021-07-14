@@ -98,7 +98,7 @@
                         <input type="email" id="input-email" class="form-control form-control-alternative"
                           placeholder="Email@gmail.com" value="" name="email" #email="ngModel"
                           [(ngModel)]="service.Doctor.email"
-                           pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                           pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"required>
                       </div>
                       <div *ngIf="form.submitted && email.errors?.required" class="text-sm text-red pl-2 pr-2">
                         Enter Email Address</div>

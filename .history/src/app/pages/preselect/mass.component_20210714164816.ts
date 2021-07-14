@@ -44,6 +44,7 @@ export class MassComponent {
     this.service.index = this.service.index - 1;
     this.service.Patient.clinicalInfo.massSpecifications.pop();
     this.service.tabs.pop();
+
   }
 }
 
