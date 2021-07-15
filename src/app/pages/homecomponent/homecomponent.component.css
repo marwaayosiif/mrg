@@ -24,7 +24,3 @@
   body {
     background: linear-gradient(87deg, #b4cce1 0, adjust-hue(#6adaff, 25%) 100%);
   }
-
-navbar{
-  background: linear-gradient(87deg, #b4cce1 0, adjust-hue(#6adaff, 25%) 100%);
-}
