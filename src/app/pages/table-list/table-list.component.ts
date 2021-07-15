@@ -21,7 +21,6 @@ import { content } from 'html2canvas/dist/types/css/property-descriptors/content
 })
 export class TableListComponent implements OnInit {
   name : string;
-  focus: boolean;
   closeResult: string;
   redirectUrl: string = '/dash/preselect';
   constructor(public service:ArbProjectService  ,private http:HttpClient, private router:Router, private modalService: NgbModal) { }
@@ -80,6 +79,7 @@ export class TableListComponent implements OnInit {
   list:ExamData[]
   pdfScr:string = '';
   Test:string = '';
+  focus:Boolean = false;
   ngOnInit() {
     let doctorId = this.service.DoctorId;
     this.service.getExamDataOfDoctor(doctorId,'examData/ExamDataOfDoctor').subscribe(res=>{this.service.list = res as ExamData[],console.log(res)})
