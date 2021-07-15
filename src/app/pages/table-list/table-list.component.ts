@@ -21,9 +21,10 @@ import { content } from 'html2canvas/dist/types/css/property-descriptors/content
 })
 export class TableListComponent implements OnInit {
   name : string;
+  focus: boolean;
   closeResult: string;
   redirectUrl: string = '/dash/preselect';
-  constructor(private service:ArbProjectService  ,private http:HttpClient, private router:Router, private modalService: NgbModal) { }
+  constructor(public service:ArbProjectService  ,private http:HttpClient, private router:Router, private modalService: NgbModal) { }
   
   fileExists(url: string): Observable<string> {
     const folderPath = url;
