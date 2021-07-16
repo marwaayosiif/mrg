@@ -386,6 +386,7 @@
 
                                             <h5 class="form-control-label" for="Mammo-history">
                                                 <input class="form-check-label" name="menopause" #menopause="ngModel"
+                                                [disabled]='service.Patient.generalInfo.pregnant'
                                                     [(ngModel)]="service.Patient.generalInfo.menopause" type="checkbox">
                                                     
                                                 <span class="form-check-sign">
@@ -404,6 +405,7 @@
 
                                             <h5 class="form-control-label" for="Mammo-history">
                                                 <input class="form-check-label" name="pregnant" #pregnant="ngModel"
+                                                [disabled]='service.Patient.generalInfo.menopause'
                                                     [(ngModel)]="service.Patient.generalInfo.pregnant" type="checkbox">
                                                 <span class="form-check-sign">
                                                     <span class="check"></span>
