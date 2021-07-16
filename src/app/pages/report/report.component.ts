@@ -108,7 +108,7 @@ export class ReportComponent implements OnInit {
       // 500
       PDF.addImage(fileURI, 'PNG', 5, 5, fileWidth, 270)
       // PDF.save("test.pdf");
-      var output = PDF.output('datauristring');
+      var output = PDF.output('blob');
       // console.log(output.type)
       // URL.createObjectURL(blob)
       // var binary = btoa(blob)
