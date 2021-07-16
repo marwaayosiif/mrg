@@ -82,11 +82,11 @@
                                                         <span class="input-group-text"><i
                                                                 class="ni ni-mobile-button"></i></span>
                                                     </div>
-                                                    <input type="text" id="input-first-name"
+                                                    <input type="number" id="input-first-name"
                                                         class="form-control form-control-alternative"
                                                         placeholder="Mobile Number" name="mobileNumber"
                                                         #mobileNumber="ngModel"
-                                                        [(ngModel)]="service.ExamData.mobileNumber" pattern="^\d{11}$"
+                                                        [(ngModel)]="service.ExamData.mobileNumber" pattern="^\d{9}$"
                                                         required>
                                                 </div>
                                                 <div *ngIf="form.submitted && mobileNumber.errors?.required"
@@ -232,7 +232,7 @@
                                     <button href="#!" type="submit" class="btn btn-secondary float-right"></button>
                                 </div> -->
                                 <div class="card-footer text-muted">
-                                    <button href="/#/dash/table-list" class="btn btn-primary btn-lg float-right" type="submit" id="right"
+                                    <button class="btn btn-primary btn-lg float-right" type="submit" id="right"
                                         style="color:white;">
                                         Add Patient
                                     </button>

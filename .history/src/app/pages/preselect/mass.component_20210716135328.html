@@ -5,7 +5,7 @@
       </mat-form-field> -->
 
 <div class="clearfix">
-    <button class="btn btn-sm btn-primary mt-2 ml-2" (click)="addTab()" style="margin-bottom: 5px;">
+    <button class="btn btn-sm btn-primary" (click)="addTab()" style="margin-bottom: 5px;">
         Add Mass
     </button>
 </div>
@@ -201,8 +201,3 @@
     </mat-tab>
     
 </mat-tab-group>
-<div class="clearfix">
-    <button class="btn btn-primary btn-sm float-right mb-6 mr-2" [hidden]="service.tabs.length === 0" (click)="removeTab()">
-        Delete Mass
-    </button>
-</div>

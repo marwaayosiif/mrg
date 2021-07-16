@@ -74,7 +74,7 @@
                                 </tr>
                             </thead>
                         </table>
-
+                        
 
                     </div>
 
@@ -171,8 +171,7 @@
                 </h3>
 
                 <!-- <div class="row justify-content-center" > -->
-                <div class="row justify-content-center"
-                    *ngIf="service.Patient.generalInfo.personalHistoryOfBreastCancer == true">
+                <div class="row justify-content-center" *ngIf="service.Patient.generalInfo.personalHistoryOfBreastCancer == true">
 
 
 
@@ -193,13 +192,12 @@
                                     </div>
                                 </div>
                             </th>
-
+                            
                             <td>
                                 Age: <input type="number" id="TEXT_1450682011285" name="motherAge"
                                     data-field-type="Number" data-field-completion-action="NONE" #motherAge="ngModel"
-                                    [(ngModel)]="service.Patient.generalInfo.motherAge" min="0" max="100"
-                                    [disabled]='!service.Patient.generalInfo.mother' style="width: 50px; height: 25px;"
-                                    class="form-control " placeholder="0" />
+                                    [(ngModel)]="service.Patient.generalInfo.motherAge" min="0" max="100"  [disabled]='!service.Patient.generalInfo.mother'
+                                    style="width: 50px; height: 25px;" class="form-control " placeholder="0" />
 
                             </td>
                             <th>
@@ -221,8 +219,8 @@
                                 Age: <input type="number" id="TEXT_1450682011285" name="sisterAge"
                                     data-field-type="Number" data-field-completion-action="NONE" #sisterAge="ngModel"
                                     [(ngModel)]="service.Patient.generalInfo.sisterAge" min="0" max="100"
-                                    [disabled]='!service.Patient.generalInfo.sister' style="width: 50px; height: 25px;"
-                                    class="form-control " placeholder="0" />
+                                    [disabled]='!service.Patient.generalInfo.sister'
+                                    style="width: 50px; height: 25px;" class="form-control " placeholder="0" />
                             </td>
                         </tr>
                         <tbody>
@@ -252,8 +250,9 @@
                                     Age: <input type="number" id="TEXT_1450682011285" name="daughterAge"
                                         data-field-type="Number" data-field-completion-action="NONE"
                                         #daughterAge="ngModel" [(ngModel)]="service.Patient.generalInfo.daughterAge"
-                                        [disabled]='!service.Patient.generalInfo.daughter' min="0" max="100"
-                                        style="width: 50px; height: 25px;" class="form-control " placeholder="0" />
+                                        [disabled]='!service.Patient.generalInfo.daughter'
+                                        min="0" max="100" style="width: 50px; height: 25px;" class="form-control "
+                                        placeholder="0" />
 
 
                                 </td>
@@ -328,8 +327,9 @@
                                     Age: <input type="number" id="TEXT_1450682011285" name="cousinAge"
                                         data-field-type="Number" data-field-completion-action="NONE"
                                         #cousinAge="ngModel" [(ngModel)]="service.Patient.generalInfo.cousinAge" min="0"
-                                        [disabled]='!service.Patient.generalInfo.cousin' max="100"
-                                        style="width: 50px; height: 25px;" class="form-control " placeholder="0">
+                                        [disabled]='!service.Patient.generalInfo.cousin'
+                                        max="100" style="width: 50px; height: 25px;" class="form-control "
+                                        placeholder="0">
 
                                 </td>
                             </tr>
@@ -355,9 +355,8 @@
 
                 <div class="form-group" *ngIf="service.Patient.generalInfo.takingHormones == true">
                     <label style="margin-right: 15px; padding-top: 9px;"><strong> For how long </strong>
-                        <input type="number" id="TEXT_1450682011285" name="howlongTakingHormones"
-                            data-field-type="Number" data-field-completion-action="NONE"
-                            #HowlongTakingHormones="ngModel"
+                        <input type="number" id="TEXT_1450682011285" name="howlongTakingHormones" data-field-type="Number"
+                            data-field-completion-action="NONE" #HowlongTakingHormones="ngModel"
                             [(ngModel)]="service.Patient.generalInfo.howlongTakingHormones"
                             style="width: 60px; height: 25px; margin-left: 10px;" class="form-control " />(Year)
                     </label>
@@ -387,9 +386,9 @@
 
                                             <h5 class="form-control-label" for="Mammo-history">
                                                 <input class="form-check-label" name="menopause" #menopause="ngModel"
-                                                    [disabled]='service.Patient.generalInfo.pregnant'
+                                                [disabled]='service.Patient.generalInfo.pregnant'
                                                     [(ngModel)]="service.Patient.generalInfo.menopause" type="checkbox">
-
+                                                    
                                                 <span class="form-check-sign">
                                                     <span class="check"></span>
                                                 </span>
@@ -406,7 +405,7 @@
 
                                             <h5 class="form-control-label" for="Mammo-history">
                                                 <input class="form-check-label" name="pregnant" #pregnant="ngModel"
-                                                    [disabled]='service.Patient.generalInfo.menopause'
+                                                [disabled]='service.Patient.generalInfo.menopause'
                                                     [(ngModel)]="service.Patient.generalInfo.pregnant" type="checkbox">
                                                 <span class="form-check-sign">
                                                     <span class="check"></span>
@@ -457,24 +456,19 @@
 
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-group focused">
-                                            <h5 class="form-control-label" for="exam-date"
-                                                style=" margin-right: 15px; padding-top: 15px;">
-                                                LMP
-                                            </h5>
-                                            <input class="form-control " type="datetime-local" id="DATE_1449431264015"
-                                                name="lmp" data-field-type="DATE" data-field-completion-action="NONE"
-                                                #lmp="ngModel" [(ngModel)]="service.Patient.generalInfo.lmp" />
-                                        </div>
-                                    </td>
-                                </tr>
 
                             </tbody>
                         </table>
-                    </div>
 
+                    </div>
+                    <div class="form-group focused">
+                        <h5 class="form-control-label" for="exam-date" style="margin-left: 35px; margin-right: 15px; padding-top: 15px;">
+                            LMP
+                        </h5>
+                        <input class="form-control " type="datetime-local" id="DATE_1449431264015" name="lmp"
+                            data-field-type="DATE" data-field-completion-action="NONE" #lmp="ngModel"
+                            [(ngModel)]="service.Patient.generalInfo.lmp" />
+                    </div>
                 </div>
                 <br>
                 <!-- </form> -->
@@ -716,13 +710,13 @@
                                 </th>
 
                             </tr>
-                            <tr style="flex-shrink: inherit;" >
+                            <tr>
 
                                 <th>
                                     <div class="form-group focused">
                                         <div class="form-check">
                                             <h5 class="form-control-label"
-                                                for="Mammo-history style= padding-top: 5px;">
+                                                for="Mammo-history style= margin-right: 15px; padding-top: 5px;">
 
 
 
@@ -882,7 +876,7 @@
                                     <option *ngFor="let item of BiRadslist" value="{{item.id}}">{{item.name}}
                                     </option>
                                 </select>
-
+                                
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -896,7 +890,7 @@
                                     <option *ngFor="let item of RecommendationList" value="{{item.id}}">{{item.name}}
                                     </option>
                                 </select>
-
+                               
                             </div>
                         </div>
                     </div>
@@ -909,7 +903,7 @@
                                         name="recommendationText" #recommendationText="ngModel"
                                         [(ngModel)]="service.Patient.finalAssessment.recommendationText"></textarea>
                                 </div>
-
+                                
                             </div>
                         </div>
                     </div>
@@ -934,7 +928,7 @@
 
                     <div class="card-footer text-muted">
                         <div class="clearfix">
-
+                           
                             <div class=" col-md-12 bg-light text-right">
                                 <button href="#!" type="submit" (click)="OnSubmit(form,'Patient')"
                                     class="btn btn-primary btn-sm float-right ml-2">Save</button>
@@ -944,7 +938,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="form-group float-left mb-2">
                     <button class="btn-sm btn-primary" (click)="t.select('Clinical-tab')">Previous</button>
                 </div>
