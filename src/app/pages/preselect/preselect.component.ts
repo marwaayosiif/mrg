@@ -121,6 +121,10 @@ export class PreselectComponent implements OnInit {
         var reader = new FileReader();
         reader.onload = (event: any) => {
           this.urls.push(event.target.result);
+          for(let url of this.urls)
+          {
+            console.log(url)
+          }
         }
         reader.readAsDataURL(this.THEfile);
       }
@@ -128,6 +132,7 @@ export class PreselectComponent implements OnInit {
   }
   OnSubmitImage(Image) {
     for (this.file of this.files) {
+      console.log(this.file)
       this.postFile(this.file).subscribe(data => { console.log(data) });
 
     }
@@ -136,7 +141,7 @@ export class PreselectComponent implements OnInit {
 
   postFile(fileToUpload: File) {
     let no: number = this.service.examDataId;
-    const endpoint = 'http://localhost:57645/api/image';
+    const endpoint = 'https://mrgf.azurewebsites.net/api/image';
     const formData: FormData = new FormData();
     var array = fileToUpload.name.split(".", 2)
     console.log(array)

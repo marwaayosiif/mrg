@@ -103,7 +103,7 @@ updateRecord(form:NgForm,data:string){
     res=>{
       console.log(res)
       this.resetForm(form);
-      this.refreshList();
+      // this.refreshList();
     },
     err=>{
       console.log(err);
@@ -119,7 +119,7 @@ refreshList() {
 
 resetForm(form: NgForm) {
   form.form.reset();
-  this.service.ExamData = new ExamData();
+  // this.service.ExamData = new ExamData();
 }
 
 }

@@ -133,8 +133,8 @@
                                 <label style="margin-right: 5px;">
                                     Time
                                     <br>
-                                    <input type="text" id="TEXT_1450682011285" name="whenHadAMammogram"
-                                        data-field-type="TEXT" data-field-completion-action="NONE"
+                                    <input type="number" id="TEXT_1450682011285" name="whenHadAMammogram"
+                                        data-field-type="Number" data-field-completion-action="NONE"
                                         style="width: 60px; height: 30px; margin-left:10px;"
                                         #whenHadAMammogram="ngModel"
                                         [(ngModel)]="service.Patient.generalInfo.whenHadAMammogram"
@@ -192,10 +192,11 @@
                                     </div>
                                 </div>
                             </th>
+                            
                             <td>
                                 Age: <input type="number" id="TEXT_1450682011285" name="motherAge"
                                     data-field-type="Number" data-field-completion-action="NONE" #motherAge="ngModel"
-                                    [(ngModel)]="service.Patient.generalInfo.motherAge"
+                                    [(ngModel)]="service.Patient.generalInfo.motherAge" min="0" max="100"  [disabled]='!service.Patient.generalInfo.mother'
                                     style="width: 50px; height: 25px;" class="form-control " placeholder="0" />
 
                             </td>
@@ -218,6 +219,7 @@
                                 Age: <input type="number" id="TEXT_1450682011285" name="sisterAge"
                                     data-field-type="Number" data-field-completion-action="NONE" #sisterAge="ngModel"
                                     [(ngModel)]="service.Patient.generalInfo.sisterAge" min="0" max="100"
+                                    [disabled]='!service.Patient.generalInfo.sister'
                                     style="width: 50px; height: 25px;" class="form-control " placeholder="0" />
                             </td>
                         </tr>
@@ -245,9 +247,10 @@
                                     </div>
                                 </th>
                                 <td>
-                                    Age: <input type="text" id="TEXT_1450682011285" name="daughterAge"
-                                        data-field-type="TEXT" data-field-completion-action="NONE"
+                                    Age: <input type="number" id="TEXT_1450682011285" name="daughterAge"
+                                        data-field-type="Number" data-field-completion-action="NONE"
                                         #daughterAge="ngModel" [(ngModel)]="service.Patient.generalInfo.daughterAge"
+                                        [disabled]='!service.Patient.generalInfo.daughter'
                                         min="0" max="100" style="width: 50px; height: 25px;" class="form-control "
                                         placeholder="0" />
 
@@ -271,10 +274,11 @@
                                     </div>
                                 </td>
                                 <td>
-                                    Age: <input type="text" id="TEXT_1450682011285" name="grandmotherAge"
-                                        data-field-type="TEXT" data-field-completion-action="NONE"
+                                    Age: <input type="number" id="TEXT_1450682011285" name="grandmotherAge"
+                                        data-field-type="Number" data-field-completion-action="NONE"
                                         #grandmotherAge="ngModel"
                                         [(ngModel)]="service.Patient.generalInfo.grandmotherAge" min="0" max="100"
+                                        [disabled]='!service.Patient.generalInfo.grandmother'
                                         style="width: 45px; height: 25px;" class="form-control " placeholder="0" />
 
 
@@ -296,9 +300,10 @@
                                     </div>
                                 </th>
                                 <td>
-                                    Age: <input type="text" id="TEXT_1450682011285" name="auntAge"
-                                        data-field-type="TEXT" data-field-completion-action="NONE" #auntAge="ngModel"
+                                    Age: <input type="number" id="TEXT_1450682011285" name="auntAge"
+                                        data-field-type="Number" data-field-completion-action="NONE" #auntAge="ngModel"
                                         [(ngModel)]="service.Patient.generalInfo.auntAge" min="0" max="100"
+                                        [disabled]='!service.Patient.generalInfo.aunt'
                                         style="width: 50px; height: 25px;" class="form-control " placeholder="0" />
                                 </td>
                                 <td>
@@ -322,6 +327,7 @@
                                     Age: <input type="number" id="TEXT_1450682011285" name="cousinAge"
                                         data-field-type="Number" data-field-completion-action="NONE"
                                         #cousinAge="ngModel" [(ngModel)]="service.Patient.generalInfo.cousinAge" min="0"
+                                        [disabled]='!service.Patient.generalInfo.cousin'
                                         max="100" style="width: 50px; height: 25px;" class="form-control "
                                         placeholder="0">
 
@@ -349,7 +355,7 @@
 
                 <div class="form-group" *ngIf="service.Patient.generalInfo.takingHormones == true">
                     <label style="margin-right: 15px; padding-top: 9px;"><strong> For how long </strong>
-                        <input type="text" id="TEXT_1450682011285" name="howlongTakingHormones" data-field-type="TEXT"
+                        <input type="number" id="TEXT_1450682011285" name="howlongTakingHormones" data-field-type="Number"
                             data-field-completion-action="NONE" #HowlongTakingHormones="ngModel"
                             [(ngModel)]="service.Patient.generalInfo.howlongTakingHormones"
                             style="width: 60px; height: 25px; margin-left: 10px;" class="form-control " />(Year)
@@ -380,7 +386,9 @@
 
                                             <h5 class="form-control-label" for="Mammo-history">
                                                 <input class="form-check-label" name="menopause" #menopause="ngModel"
+                                                [disabled]='service.Patient.generalInfo.pregnant'
                                                     [(ngModel)]="service.Patient.generalInfo.menopause" type="checkbox">
+                                                    
                                                 <span class="form-check-sign">
                                                     <span class="check"></span>
                                                 </span>
@@ -397,6 +405,7 @@
 
                                             <h5 class="form-control-label" for="Mammo-history">
                                                 <input class="form-check-label" name="pregnant" #pregnant="ngModel"
+                                                [disabled]='service.Patient.generalInfo.menopause'
                                                     [(ngModel)]="service.Patient.generalInfo.pregnant" type="checkbox">
                                                 <span class="form-check-sign">
                                                     <span class="check"></span>
@@ -419,8 +428,8 @@
                                         <div class="form-group focused">
                                             <h5 class="form-control-label"
                                                 style="margin-right: 15px;  padding-top: 5px;"> Gravida </h5>
-                                            <input type="text" id="TEXT_1450682011285" name="gravida"
-                                                data-field-type="TEXT" data-field-completion-action="NONE"
+                                            <input type="number" id="TEXT_1450682011285" name="gravida"
+                                                data-field-type="Number" data-field-completion-action="NONE"
                                                 #gravida="ngModel" [(ngModel)]="service.Patient.generalInfo.gravida"
                                                 min="0" max="100" style="width: 50px; height: 25px;"
                                                 class="form-control " placeholder="0" />
@@ -438,8 +447,8 @@
                                         <div class="form-group focused">
                                             <h5 class="form-control-label"
                                                 style="margin-right: 15px; ; padding-top: 5px;"> Para </h5>
-                                            <input type="text" id="TEXT_1450682011285" name="para"
-                                                data-field-type="TEXT" data-field-completion-action="NONE"
+                                            <input type="number" id="TEXT_1450682011285" name="para"
+                                                data-field-type="Number" data-field-completion-action="NONE"
                                                 #para="ngModel" [(ngModel)]="service.Patient.generalInfo.para" min="0"
                                                 max="100" style="width: 45px; height: 25px;" class="form-control "
                                                 placeholder="0" />
