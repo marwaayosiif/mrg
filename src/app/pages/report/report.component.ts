@@ -8,6 +8,8 @@ import { NgForm } from '@angular/forms';
 import { HttpClient } from "@angular/common/http";
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { title } from 'process';
+import { buildDriverProvider } from 'protractor/built/driverProviders';
 declare const google: any;
 // import WebViewer from '@pdftron/webviewer';
 
@@ -89,128 +91,47 @@ export class ReportComponent implements OnInit {
   //   // });
   //   }
 
-  generatePDF() {
+  PDF(cond:string) {
     const exportedContent = document.getElementById('contentToConvert');
-    html2canvas(exportedContent,{ scrollY: -window.scrollY , scrollX: window.scrollX-10}
+    html2canvas(exportedContent,{ scrollY: -window.scrollY , scrollX: window.scrollX}
       ).then(canvas => {
       console.log(canvas.height)
       console.log(canvas.width)
-      const fileWidth = 203;
+      // 203
+      const fileWidth = 180;
       const fileHeight = canvas.height * fileWidth / canvas.width;
       console.log(fileHeight) 
       const fileURI = canvas.toDataURL()
-      const PDF = new jspdf('p', 'mm', [225,505]);
+      // 225,505
+      const PDF = new jspdf('p', 'mm', [200,300]);
       const position = 0;
-      PDF.addImage(fileURI, 'PNG', 5, 5, fileWidth, 500)
+      // 500
+      PDF.addImage(fileURI, 'PNG', 5, 5, fileWidth, 270)
       // PDF.save("test.pdf");
-      var blob = PDF.output("blob");
-      window.open(URL.createObjectURL(blob));
+      var output = PDF.output('datauristring');
+      // console.log(output.type)
+      // URL.createObjectURL(blob)
+      // var binary = btoa(blob)
+      // JSON.stringify(binary)
+      // var newBlob = new Blob([blob.])
+      
+      const formData = new FormData();
+      formData.append('Name', this.service.ExamData.patientID);
+      formData.append('TileImage', output);
+      // console.log(blob)
+
+      
+      if(cond === 'download'){
+        window.open(URL.createObjectURL(output));
+      }
+      if(cond === 'export')
+      {
+        this.http.post("https://mrgf.azurewebsites.net/api/report",formData).subscribe(res=> console.log(res));
+      }
+      
+      
     });
   }
+ 
 
 }
-
-  // generatePDF(){
-  //   const pdfBlock = document.getElementById("contentToConvert");
-
-  //   const options = { 
-  //     background: "white", 
-  //     height: 600, 
-  //     width: pdfBlock.clientHeight 
-  //   };
-
-  //   domtoimage.toPng(pdfBlock, options).then((fileUrl) => {
-  //     var doc = new jspdf("p","mm","a4");
-  //     doc.addImage(fileUrl, 'PNG', 12, 12, 240, 180);
-
-  //     let docRes = doc.output();
-  //     let buffer = new ArrayBuffer(docRes.length);
-  //     let array = new Uint8Array(buffer);
-  //     for (var i = 0; i < docRes.length; i++) {
-  //         array[i] = docRes.charCodeAt(i);
-  //     }
-  //     const directory = this.file.dataDirectory;
-  //     const fileName = "OptemeterReport.pdf";
-
-  //     let options: IWriteOptions = { 
-  //       replace: true 
-  //     };
-
-  //     this.file.checkFile(directory, fileName).then((res)=> {
-  //       this.file.writeFile(directory, fileName,buffer, options)
-  //       .then((res)=> {
-  //         console.log("File generated" + JSON.stringify(res));
-  //         this.fileOpener.open(this.file.dataDirectory + fileName, 'application/pdf')
-  //           .then(() => console.log('File is exported'))
-  //           .catch(e => console.log(e));
-  //       }).catch((error)=> {
-  //         console.log(JSON.stringify(error));
-  //       });
-  //     }).catch((error)=> {
-  //       this.file.writeFile(directory,fileName,buffer).then((res)=> {
-  //         console.log("File generated" + JSON.stringify(res));
-  //         this.fileOpener.open(this.file.dataDirectory + fileName, 'application/pdf')
-  //           .then(() => console.log('File exported'))
-  //           .catch(e => console.log(e));
-  //       })
-  //       .catch((error)=> {
-  //         console.log(JSON.stringify(error));
-  //       });
-  //     });
-  //   }).catch(function (error) {
-  //     console.error(error);
-  //   }).finally(()=>{
-  //        loading.dismiss();
-  //  });
-  // }  
-
-
-  // generatePDF() {
-
-  //   var data = document.getElementById('Please') as HTMLCanvasElement;
-  //   console.log(data)
-  //   html2canvas(data).then(canvas => {
-  //     var imgWidth = 208;   
-  //     var pageHeight = 1080;    
-  //     var imgHeight = canvas.height * imgWidth / canvas.width;  
-  //     var heightLeft = imgHeight;  
-  //     console.log(imgWidth)
-  //     const contentDataURL = canvas.toDataURL('image/png')
-  //     let pdf = new jspdf('p', 'mm', 'a4', true);
-  //     var position = 0;
-  //     pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight+ 25);
-  //     heightLeft -= pageHeight;
-
-  //     while (heightLeft >= 0) {
-  //     position = heightLeft - imgHeight;
-  //     pdf.addPage();
-  //     pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight+ 25);
-  //     heightLeft -= pageHeight;
-  //     }
-  //     var blob = pdf.output("blob");
-  //     window.open(URL.createObjectURL(blob));
-  //   });
-  //   }
-// }
-
-// pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight ,undefined,'FAST')
-
-
-
-
-// <pdf-viewer  [src] = "pdfScr" [render-text] = "true" [show-all]= "true" style="display: block;"></pdf-viewer>
-
-// @ViewChild('viewer') viewerRef: ElementRef;
-//   ngAfterViewInit(): void {
-    // WebViewer({
-    //   path: '../assets/lib',
-    //   initialDoc: 'https://pdftron.s3.amazonaws.com/downloads/pl/demo-annotated.pdf'
-    // }, this.viewerRef.nativeElement).then(instance => {
-    //   instance.disableElements(['toolbarGroup-Shapes']);
-    //   instance.disableElements(['toolbarGroup-Edit']);
-    //   instance.disableElements(['toolbarGroup-Insert']);
-    //   instance.disableElements(['toolbarGroup-Annotate']);
-
-    // });
-
-  // }

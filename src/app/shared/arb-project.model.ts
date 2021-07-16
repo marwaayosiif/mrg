@@ -92,20 +92,10 @@ export class FinalAssessment{
     id: number = 0;
     recommendationId: number = 0;
     biRadsId: number = 0;
-    // recommendation:Recommendation = new Recommendation();
-    // biRads:BiRads = new BiRads();
     recommendationText: string = '';
     conc: string = '';
 }
 
-// export class BiRads{
-//     id:number = 0;
-//     name:string='';
-// }
-// export class Recommendation{
-//     id:number = 0;
-//     name:string = '';
-// }
 export class Patient{
     id: number = 0;
     clinicalInfoId: number= 0;

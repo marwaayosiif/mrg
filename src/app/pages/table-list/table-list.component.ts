@@ -25,25 +25,30 @@ export class TableListComponent implements OnInit {
   redirectUrl: string = '/dash/preselect';
   constructor(public service:ArbProjectService  ,private http:HttpClient, private router:Router, private modalService: NgbModal) { }
   
-  fileExists(url: string): Observable<string> {
-    const folderPath = url;
-    return this.http.get(url, { observe: 'response', responseType: 'blob' }).pipe(map(
-      res => {
-        return folderPath;
-      }),
-    catchError(error => {
-      return of(error);
-    })
-    )}
+  // fileExists(url: string): Observable<string> {
+  //   const folderPath = url;
+  //   return this.http.get(url, { observe: 'response', responseType: 'blob' }).pipe(map(
+  //     res => {
+  //       return folderPath;
+  //     }),
+  //   catchError(error => {
+  //     return of(error);
+  //   })
+  //   )}
 
-  open(content1,content2,name:string) {
-    console.log(name);
-    this.pdfScr = '';
-    this.Test = `assets/${name}.pdf`;
-    this.fileExists(this.Test).subscribe(res=> {
-      let result = res as string;
-      if (result == this.Test){
-        this.pdfScr = this.Test
+  open(content1,content2,patientname:string) {
+    // console.log(name);
+    // this.pdfScr = '';
+    // this.Test = `assets/${name}.pdf`;
+    // this.http.get("").subscribe(res=>{
+    //   var coded = res;
+    // })
+    console.log(`https://mrgf.azurewebsites.net/api/report/${patientname}`)
+    this.http.get(`https://mrgf.azurewebsites.net/api/report/${patientname}`).subscribe(res=> {
+      let result = res;
+      if (result){
+        URL.createObjectURL(result)
+        this.pdfScr = URL.createObjectURL(result)
         this.modalService.open(content1, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
           this.closeResult = ` ${result}`;
         }, (reason) => {
@@ -59,6 +64,8 @@ export class TableListComponent implements OnInit {
       }
     });
   }
+
+
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
