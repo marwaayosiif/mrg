@@ -38,19 +38,31 @@
           </table>
         </div>
         <div class="card-body "  style=" border: solid gray thin ; margin: 0ch;">
-          
+          <h1 class="display-4"><u>History:</u></h1>
+          <div>
+            <div *ngIf="(service.Patient.generalInfo.hadAMammogram==true); then thenBlockHadMammogram  else elseBlockHadMammogram"></div>
+          <ng-template #thenBlockHadMammogram>The Modality used in the pervious examination was {{service.Patient.generalInfo.modalityType}} in {{service.Patient.generalInfo.whereHadAMammogram}} Hospital
+            this was {{service.Patient.generalInfo.whenHadAMammogram}} Years ago And The Findings were {{service.Patient.generalInfo.historyOfMammogram}} 
+          </ng-template>
+          <ng-template #elseBlockHadMammogram> No Pervious Mammogram </ng-template><br>
+          <div *ngIf="(service.Patient.generalInfo.takingHormones==true); then thenBlockHormones  else elseBlockHormones"></div>
+            <ng-template #thenBlockHormones>The Patient Takes Hormones for {{service.Patient.generalInfo.howlongTakingHormones}} Years</ng-template>
+            <ng-template #elseBlockHormones> No Hormones is Taken</ng-template>
+          <!-- </div> -->
+          </div>
           <h1 class="display-4"><u>Indication for Examination:</u></h1>
           <div>
             The reason for this examination is {{service.Patient.generalInfo.examReason}}
-            <div *ngIf="service.Patient.generalInfo.examReason==='Complain'; then thenBlockComplain  else elseBlockComplain"></div> <br>
-            the pain was in the {{service.Patient.clinicalInfo.massSpecifications[0].laterality}} breast<br>
-            and this examination was in {{service.Patient.generalInfo.examDate |date:'dd.MM.yyyy'}}
-            <ng-template #thenBlockComplain> : {{service.Patient.generalInfo.complain}} </ng-template>
+            <div *ngIf="service.Patient.generalInfo.examReason==='Complain'; then thenBlockComplain  else elseBlockComplain"></div>
+            
+            <ng-template #thenBlockComplain> : {{service.Patient.generalInfo.complain}}, </ng-template>
             <ng-template #elseBlockComplain>,  </ng-template>
+            the pain was in the {{service.Patient.clinicalInfo.massSpecifications[0].laterality}} breast
+            and this examination was in {{service.Patient.generalInfo.examDate |date:'dd.MM.yyyy'}}
           </div>
           
          
-          <div>
+          <!-- <div>
             <h3>Pervious Mammogram</h3>
             <div *ngIf="(service.Patient.generalInfo.hadAMammogram==true); then thenBlockHadMammogram  else elseBlockHadMammogram"></div>
           <ng-template #thenBlockHadMammogram>The Modality used in the pervious examination was {{service.Patient.generalInfo.modalityType}} in {{service.Patient.generalInfo.whereHadAMammogram}} Hospital
@@ -79,8 +91,8 @@
             <div *ngIf="(service.Patient.generalInfo.takingHormones==true); then thenBlockHormones  else elseBlockHormones"></div>
             <ng-template #thenBlockHormones>The Patient Takes Hormones for {{service.Patient.generalInfo.howlongTakingHormones}} Years</ng-template>
             <ng-template #elseBlockHormones> No Hormones is Taken</ng-template>
-          </div>
-          <div>
+          </div> -->
+          <!-- <div>
             <h3>Pergnancy History</h3>
             <div *ngIf="(service.Patient.generalInfo.pergnancyHistory==true); then thenBlockPregnancy  else elseBlockPregnancy"></div>
             <ng-template #thenBlockPregnancy>
@@ -92,7 +104,7 @@
             <ng-template #elseBlockPregnancy> No Prgnancy History</ng-template>
 
           
-          </div>
+          </div> -->
 
           
           <h1 class="display-4"><u>Findings:</u></h1>
@@ -141,7 +153,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor = "let pd of massSpecifications ;let i = index">
+                <tr *ngFor = "let pd of massSpecifications ;let i = index" >
                   <td>
                     {{i+1}}
                   </td>

@@ -65,24 +65,19 @@ export class PreselectComponent implements OnInit {
   constructor(public service: ArbProjectService, private http: HttpClient, private sanitizer: DomSanitizer) {
     
    }
-
+   retrievedImage:any
   ngOnInit(): void {
     console.log(this.service.examDataId);
-    this.http.get(`http://localhost:57645/api/image/${this.service.examDataId}`).subscribe(res => {
+    this.http.get(`https://mrgf.azurewebsites.net/api/image/${this.service.examDataId}`).subscribe(res => {
       console.log(res)
-      for (var file of res as Array<string>) {
-        console.log(file)
-        // console.log("henaaaaakkk")
-        this.getBase64ImageFromUrl(file)
-          .then(result => {
-            this.urls.push(result as string);
-            for (var i of this.urls) {
-              console.log(i)
-            }
-          })
-          .catch(err => console.error(err));
+      for(var file of res as Array<string> )
+      {
 
+      this.retrievedImage = 'data:image/jpeg;base64,' + file;
+
+      this.urls.push(this.retrievedImage);
       }
+
 
 
     }, err => {
@@ -91,22 +86,22 @@ export class PreselectComponent implements OnInit {
 
   }
 
-  async getBase64ImageFromUrl(imageUrl) {
-    var res = await fetch(imageUrl);
-    var blob = await res.blob();
+  // async getBase64ImageFromUrl(imageUrl) {
+  //   var res = await fetch(imageUrl);
+  //   var blob = await res.blob();
 
-    return new Promise((resolve, reject) => {
-      var reader = new FileReader();
-      reader.addEventListener("load", function () {
-        resolve(reader.result);
-      }, false);
+  //   return new Promise((resolve, reject) => {
+  //     var reader = new FileReader();
+  //     reader.addEventListener("load", function () {
+  //       resolve(reader.result);
+  //     }, false);
 
-      reader.onerror = () => {
-        return reject(this);
-      };
-      reader.readAsDataURL(blob);
-    })
-  }
+  //     reader.onerror = () => {
+  //       return reject(this);
+  //     };
+  //     reader.readAsDataURL(blob);
+  //   })
+  // }
   handleFileInput(event) {
     this.urls = [];
     this.fileToUploads = event.target.files;
@@ -166,7 +161,7 @@ export class PreselectComponent implements OnInit {
     else {
       var array = url.split("\\", 8)
       console.log(array[7])
-      this.http.delete("http://localhost:57645/api/deleteImage/" + url).subscribe(res => {
+      this.http.delete("https://mrgf.azurewebsites.net/api/deleteImage/" + url).subscribe(res => {
         console.log(res)
       })
     }

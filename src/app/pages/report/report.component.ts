@@ -109,17 +109,10 @@ export class ReportComponent implements OnInit {
       PDF.addImage(fileURI, 'PNG', 5, 5, fileWidth, 270)
       // PDF.save("test.pdf");
       var output = PDF.output('blob');
-      // console.log(output.type)
-      // URL.createObjectURL(blob)
-      // var binary = btoa(blob)
-      // JSON.stringify(binary)
-      // var newBlob = new Blob([blob.])
-      
-      const formData = new FormData();
-      formData.append('Name', this.service.ExamData.patientID);
-      formData.append('TileImage', output);
-      // console.log(blob)
 
+      const formData = new FormData();
+
+      formData.append('Image', output , this.service.ExamData.patientID);
       
       if(cond === 'download'){
         window.open(URL.createObjectURL(output));
