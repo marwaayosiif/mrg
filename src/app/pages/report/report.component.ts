@@ -98,6 +98,7 @@ export class ReportComponent implements OnInit {
       console.log(canvas.height)
       console.log(canvas.width)
       // 203
+      //180
       const fileWidth = 180;
       const fileHeight = canvas.height * fileWidth / canvas.width;
       console.log(fileHeight) 
@@ -109,7 +110,7 @@ export class ReportComponent implements OnInit {
       PDF.addImage(fileURI, 'PNG', 5, 5, fileWidth, 270)
       // PDF.save("test.pdf");
       var output = PDF.output('blob');
-
+      // window.open(URL.createObjectURL(output));
       const formData = new FormData();
 
       formData.append('Image', output , this.service.ExamData.patientID);
