@@ -8,7 +8,7 @@ import { Observable, throwError ,of } from 'rxjs';
 import { catchError, retry ,map } from 'rxjs/operators';
 import { ExamData,ClinicalInfo,GeneralInfo,FinalAssessment,Patient} from 'src/app/shared/arb-project.model';
 import { Router } from '@angular/router';
-// import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ModalDismissReasons, NgbModal  } from '@ng-bootstrap/ng-bootstrap';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
