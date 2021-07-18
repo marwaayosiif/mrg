@@ -21,7 +21,7 @@ export class NgbdTabsetSelectbyid  implements OnInit{
     console.log(this.service.Patient);
     this.router.navigate([route])
   }
-
+  patientName:any
   ClinicalInfo:ClinicalInfo = new ClinicalInfo();
   GeneralInfo:GeneralInfo= new GeneralInfo();
   Patient:Patient = new Patient();
@@ -59,6 +59,11 @@ export class NgbdTabsetSelectbyid  implements OnInit{
     .subscribe(res =>  this.ClacificationSuspiciousMorphology = res as []);
     this.service.getCombo('GetClacificationDistribution')
     .subscribe(res =>  this.ClacificationDistribution = res as []);
+    for(var exam of this.service.list){
+      if(exam.id == this.service.examDataId){
+        this.patientName = exam.name
+      }
+    }
   }
   
   OnSubmit(form:NgForm,data:string){
