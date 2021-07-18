@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
     this.service.PostLogin().subscribe(
       res => {
         console.log(res);
-        if (res == "wrong password" || res == "Not Found") {
+        if (res == "wrong password" || res == "Not Found" || res == "Error") {
           this.flag = false;
 
         }

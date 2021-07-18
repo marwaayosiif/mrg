@@ -35,10 +35,10 @@
                   [(ngModel)]="service.Login.email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
                 <!-- name="email" #email="ngModel" value = "" [(ngModel)] = "Doctor.email"> -->
               </div>
-              <div *ngIf="form.submitted && email.errors?.required" class="text-sm text-red pl-2 pr-2">
+              <!-- <div *ngIf="form.submitted && email.errors?.required" class="text-sm text-red pl-2 pr-2">
                 Please enter Email Address</div>
               <div *ngIf="form.submitted && email.errors?.pattern" class="text-sm text-red pl-2 pr-2">
-                Enter a Valid Email Address</div>
+                Enter a Valid Email Address</div> -->
             </div>
             <div class="form-group">
               <label for="password">Password</label>
@@ -50,8 +50,8 @@
                   value="" [(ngModel)]="service.Login.password" #password="ngModel" required>
                 <!-- name="password" #password="ngModel"  value = "" [(ngModel)] = "Doctor.password"> -->
               </div>
-              <div *ngIf="form.submitted && password.errors?.required" class="text-sm text-danger pl-2 pr-2"> Password
-                is Required !!</div>
+              <!-- <div *ngIf="form.submitted && password.errors?.required" class="text-sm text-danger pl-2 pr-2"> Password
+                is Required !!</div> -->
             </div>
 
             <!-- <h1 *ngIf="flag === false " class="text-danger form-control-label"
@@ -59,8 +59,9 @@
             <div class="custom-control custom-control-alternative custom-checkbox">
               <input class="custom-control-input" id=" customCheckLogin" type="checkbox" name="RememberMe"
                 #RememberMe="ngModel" value="" [(ngModel)]="service.Login.RememberMe" required>
+                <!-- href="/#/dash/table-list"  -->
 
-              <button href="/#/dash/table-list" type="submit" class="btn btn-sm float-right btn-primary">Sign in</button>
+              <button type="submit" class="btn btn-sm float-right btn-primary">Sign in</button>
 
 
               <!-- <label class="custom-control-label" for=" customCheckLogin">

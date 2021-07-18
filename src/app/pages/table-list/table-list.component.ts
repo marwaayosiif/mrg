@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import Chart from 'chart.js';
 import {PatientComponent} from 'src/app/pages/patient/patient.component'
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
@@ -8,6 +8,7 @@ import { Observable, throwError ,of } from 'rxjs';
 import { catchError, retry ,map } from 'rxjs/operators';
 import { ExamData,ClinicalInfo,GeneralInfo,FinalAssessment,Patient} from 'src/app/shared/arb-project.model';
 import { Router } from '@angular/router';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ModalDismissReasons, NgbModal  } from '@ng-bootstrap/ng-bootstrap';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -15,15 +16,20 @@ import { content } from 'html2canvas/dist/types/css/property-descriptors/content
 
 
 @Component({
+  
   selector: 'app-table-list',
   templateUrl: './table-list.component.html',
   styleUrls: ['./table-list.component.scss']
 })
+
 export class TableListComponent implements OnInit {
+  
   name : string;
   closeResult: string;
   redirectUrl: string = '/dash/preselect';
-  constructor(public service:ArbProjectService  ,private http:HttpClient, private router:Router, private modalService: NgbModal) { }
+  constructor(public service:ArbProjectService  ,private http:HttpClient, private router:Router, private modalService: NgbModal) { 
+    
+  }
   
   // fileExists(url: string): Observable<string> {
   //   const folderPath = url;
@@ -43,12 +49,16 @@ export class TableListComponent implements OnInit {
     // this.http.get("").subscribe(res=>{
     //   var coded = res;
     // })
-    console.log(`https://mrgf.azurewebsites.net/api/report/${patientname}`)
+    // console.log(`https://mrgf.azurewebsites.net/api/report/${patientname}`)
     this.http.get(`https://mrgf.azurewebsites.net/api/report/${patientname}`).subscribe(res=> {
-      let result = res;
-      if (result){
-        URL.createObjectURL(result)
-        this.pdfScr = URL.createObjectURL(result)
+      
+      let result = res[3];
+      
+      var retrievedImage = 'data:image/jpeg;base64,' + result.tileImage;
+      if (retrievedImage){
+        console.log(retrievedImage)
+        // URL.createObjectURL(result)
+        this.pdfScr = retrievedImage
         this.modalService.open(content1, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
           this.closeResult = ` ${result}`;
         }, (reason) => {
@@ -82,11 +92,13 @@ export class TableListComponent implements OnInit {
     this.router.navigate([route])
 
   }
+  
   ExamData:ExamData = new ExamData();
   list:ExamData[]
   pdfScr:string = '';
   Test:string = '';
   focus:Boolean = false;
+  searchText;
   ngOnInit() {
     let doctorId = this.service.DoctorId;
     this.service.getExamDataOfDoctor(doctorId,'examData/ExamDataOfDoctor').subscribe(res=>{this.service.list = res as ExamData[],console.log(res)})
@@ -140,7 +152,8 @@ export class TableListComponent implements OnInit {
         return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
       });
 
-    }else if(this.name == ""){
+    }
+    else if(this.name == ""){
       this.ngOnInit();
 
     }
