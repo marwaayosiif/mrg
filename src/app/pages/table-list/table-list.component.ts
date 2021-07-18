@@ -43,6 +43,7 @@ export class TableListComponent implements OnInit {
   //   )}
 
   open(content1,content2,patientname:string) {
+    console.log(patientname)
     // console.log(name);
     // this.pdfScr = '';
     // this.Test = `assets/${name}.pdf`;
@@ -50,9 +51,9 @@ export class TableListComponent implements OnInit {
     //   var coded = res;
     // })
     // console.log(`https://mrgf.azurewebsites.net/api/report/${patientname}`)
-    this.http.get(`https://mrgf.azurewebsites.net/api/report/${patientname}`).subscribe(res=> {
-      
-      let result = res[3];
+    this.http.post('https://mrgf.azurewebsites.net/api/report/',patientname).subscribe(res=> {
+      console.log(res)
+      let result 
       
       var retrievedImage = 'data:image/jpeg;base64,' + result.tileImage;
       if (retrievedImage){
