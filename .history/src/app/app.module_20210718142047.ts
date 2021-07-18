@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-// import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 // import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 // import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
