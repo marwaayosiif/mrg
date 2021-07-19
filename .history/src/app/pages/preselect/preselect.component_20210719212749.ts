@@ -43,13 +43,13 @@ export class PreselectComponent implements OnInit {
   {
     this.showModal = true; // Show-Hide Modal Check
     this.myurl = url;
+
   }
   //Bootstrap Modal Close event
   hide()
   {
     this.showModal = false;
   }
-  
   onCreateProduct() {
     this.createProduct = true;
     this.message = '';

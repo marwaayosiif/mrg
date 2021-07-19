@@ -28,9 +28,8 @@ export class LoginComponent implements OnInit {
   Doctor: Doctor = new Doctor();
   Login: Login = new Login();
   flag: boolean = true;
-  showModal: boolean;
   display='none'; //default Variable
-  // content: string;
+  modal_content: string;
 
   
   ngOnInit() {
@@ -54,15 +53,6 @@ export class LoginComponent implements OnInit {
       return ` ${reason}`;
     }
   }
-  show()
-  {
-    this.showModal = true; // Show-Hide Modal Check
-  }
-  //Bootstrap Modal Close event
-  hide()
-  {
-    this.showModal = false;
-  }
 
 //  openModalDialog(){
 //     this.display='block'; //Set block css
@@ -72,14 +62,13 @@ export class LoginComponent implements OnInit {
 //   this.display='none'; //set none css after close dialog
 //  }
  
-  OnSubmit(form: NgForm,data:string) {
+  OnSubmit(form: NgForm,data:string,modal_content) {
     this.service.PostLogin().subscribe(
       res => {
         console.log(res);
         if (res == "wrong password" || res == "Not Found" || res == "Error") {
           this.flag = false;
-          // this.open(content)
-          this.show()
+          this.open
 
         }
         else {

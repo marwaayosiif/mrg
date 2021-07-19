@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   Doctor: Doctor = new Doctor();
   Login: Login = new Login();
   flag: boolean = true;
-  showModal: boolean;
+  NEW: boolean;
   display='none'; //default Variable
   // content: string;
 

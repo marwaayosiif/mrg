@@ -49,7 +49,6 @@ export class PreselectComponent implements OnInit {
   {
     this.showModal = false;
   }
-  
   onCreateProduct() {
     this.createProduct = true;
     this.message = '';

@@ -24,16 +24,15 @@
           <div class="text-center text-muted mb-4">
             <small>sign in with credentials</small>
           </div>
-          <form #form="ngForm" name="campaignForm" (submit)="OnSubmit(form,'doctor/LoginOfTheDoctor')">
+          <form #form="ngForm" name="campaignForm" (submit)="OnSubmit(form,'doctor/LoginOfTheDoctor','NEW')">
             <div class="form-group mb-3">
               <label for="username">Email</label>
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
-                <input class="form-control myinput" placeholder="Email" type="email" name="email" #email="ngModel"
-                  value="" [(ngModel)]="service.Login.email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                  required>
+                <input class="form-control myinput" placeholder="Email" type="email" name="email" #email="ngModel" value=""
+                  [(ngModel)]="service.Login.email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
                 <!-- name="email" #email="ngModel" value = "" [(ngModel)] = "Doctor.email"> -->
               </div>
               <!-- <div *ngIf="form.submitted && email.errors?.required" class="text-sm text-red pl-2 pr-2">
@@ -47,8 +46,8 @@
                 <div class="input-group-prepend inputgp">
                   <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                 </div>
-                <input class="form-control myinput" placeholder="Password" type="password" name="password"
-                  #password="ngModel" value="" [(ngModel)]="service.Login.password" #password="ngModel" required>
+                <input class="form-control myinput" placeholder="Password" type="password" name="password" #password="ngModel"
+                  value="" [(ngModel)]="service.Login.password" #password="ngModel" required>
                 <!-- name="password" #password="ngModel"  value = "" [(ngModel)] = "Doctor.password"> -->
               </div>
               <!-- <div *ngIf="form.submitted && password.errors?.required" class="text-sm text-danger pl-2 pr-2"> Password
@@ -60,7 +59,7 @@
             <div class="custom-control custom-control-alternative custom-checkbox">
               <input class="custom-control-input" id=" customCheckLogin" type="checkbox" name="RememberMe"
                 #RememberMe="ngModel" value="" [(ngModel)]="service.Login.RememberMe" required>
-              <!-- href="/#/dash/table-list"  -->
+                <!-- href="/#/dash/table-list"  -->
 
               <button type="submit" class="btn btn-sm float-right btn-primary">Sign in</button>
 
@@ -94,7 +93,7 @@
     </div>
   </div>
 </div>
-<!-- <ng-template #NEW let-modal>
+<ng-template #NEW let-modal>
 
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">PDF</h4>
@@ -110,7 +109,7 @@
   </div>
 
 
-</ng-template> -->
+</ng-template>
 <!-- <ng-template #Objection let-modal>
 
   <div class="modal-header">
@@ -121,32 +120,3 @@
     <label for="">Wrong</label>
 
   </div> -->
-<!-- <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="signinmodal" tabindex="-1" role="dialog"
-  aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      
-      <div class="modal-body">
-        <p class="text-center" style="color: red;font-family: 'Times New Roman', Times, serif;font-size: 18px;">
-          Invalid Email or Password
-        </p>
-      </div>
-     <button type="button" class="btn btn-sm float-right btn-primary" data-dismiss="modal" (click)="hide()">Close</button>
-      
-    </div>
-  </div>
-</div> -->
-<div  [style.display]="showModal ? 'block' : 'none'" class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title ml-10" style="color: red;margin-left: 3.3cm;margin-top: 3px;">Wrong Email or Password</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" (click)="hide()">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      </div>
-    </div>
-  </div>
-</div>

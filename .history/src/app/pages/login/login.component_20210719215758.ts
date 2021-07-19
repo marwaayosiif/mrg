@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   Doctor: Doctor = new Doctor();
   Login: Login = new Login();
   flag: boolean = true;
-  showModal: boolean;
+  NEW: boolean;
   display='none'; //default Variable
   // content: string;
 
@@ -56,12 +56,12 @@ export class LoginComponent implements OnInit {
   }
   show()
   {
-    this.showModal = true; // Show-Hide Modal Check
+    this.NEW = true; // Show-Hide Modal Check
   }
   //Bootstrap Modal Close event
   hide()
   {
-    this.showModal = false;
+    this.NEW = false;
   }
 
 //  openModalDialog(){

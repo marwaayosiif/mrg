@@ -121,32 +121,20 @@
     <label for="">Wrong</label>
 
   </div> -->
-<!-- <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="signinmodal" tabindex="-1" role="dialog"
+<div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog"
   aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      
+      <!-- <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Image preview</h4>
+        </div> -->
       <div class="modal-body">
-        <p class="text-center" style="color: red;font-family: 'Times New Roman', Times, serif;font-size: 18px;">
-          Invalid Email or Password
+        <p class="text-center" style="color: red;">
+          Wrong Password
         </p>
       </div>
-     <button type="button" class="btn btn-sm float-right btn-primary" data-dismiss="modal" (click)="hide()">Close</button>
+     <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" (click)="hide()">Close</button>
       
-    </div>
-  </div>
-</div> -->
-<div  [style.display]="showModal ? 'block' : 'none'" class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title ml-10" style="color: red;margin-left: 3.3cm;margin-top: 3px;">Wrong Email or Password</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" (click)="hide()">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      </div>
     </div>
   </div>
 </div>
