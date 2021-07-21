@@ -62,7 +62,15 @@ export class PatientComponent implements OnInit {
       options: chartExample2.options,
       data: chartExample2.data
     });
-    
+    show()
+    {
+      this.showModal = true; // Show-Hide Modal Check
+    }
+    //Bootstrap Modal Close event
+    hide()
+    {
+      this.showModal = false;
+    }
     var chartSales = document.getElementById('chart-sales');
 
     this.salesChart = new Chart(chartSales, {
@@ -76,24 +84,14 @@ export class PatientComponent implements OnInit {
     this.salesChart.data.datasets[0].data = this.data;
     this.salesChart.update();
   }
-  show()
-  {
-    this.showModal = true; // Show-Hide Modal Check
-  }
-  //Bootstrap Modal Close event
-  hide()
-  {
-    this.showModal = false;
-  }
+  
   OnSubmit(form:NgForm,data:string){
     console.log(this.service.ExamData.id);
     this.service.ExamData.doctorId = this.service.DoctorId;
     if(this.service.ExamData.id == 0)
         this.insertRecord(form,data);
     else
-        this.updateRecord(form,data); 
-    
-    this.show()
+        this.updateRecord(form,data);    
 }
 // patientForm(selectedRecord:ExamData){
 //   console.log(selectedRecord);

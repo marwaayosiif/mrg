@@ -91,9 +91,7 @@ export class PatientComponent implements OnInit {
     if(this.service.ExamData.id == 0)
         this.insertRecord(form,data);
     else
-        this.updateRecord(form,data); 
-    
-    this.show()
+        this.updateRecord(form,data);    
 }
 // patientForm(selectedRecord:ExamData){
 //   console.log(selectedRecord);

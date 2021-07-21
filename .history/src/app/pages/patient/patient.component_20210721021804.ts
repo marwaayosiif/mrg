@@ -93,7 +93,7 @@ export class PatientComponent implements OnInit {
     else
         this.updateRecord(form,data); 
     
-    this.show()
+        this.show()
 }
 // patientForm(selectedRecord:ExamData){
 //   console.log(selectedRecord);

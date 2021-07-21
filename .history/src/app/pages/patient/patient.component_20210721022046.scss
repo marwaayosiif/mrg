@@ -16,11 +16,11 @@ input.ng-invalid.ng-touched{
     display: flex;
     align-items: flex-start;
     justify-content:center;
-    padding: 0.5rem;
+    padding: 0.2rem;
     border-bottom: 0 solid #e9ecef;
     border-top-left-radius: 0.4375rem;
     border-top-right-radius: 0.4375rem;
-    border: 2px solid navy;
+    border: 1px solid rgb(161, 161, 161)(161, 161, 161);
     // width: fit-content;
 }
 .modal-dialog {

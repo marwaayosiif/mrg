@@ -41,7 +41,9 @@
                                                         placeholder="Username" name="name" #name="ngModel"
                                                         [(ngModel)]="service.ExamData.name" required>
                                                 </div>
-                                                
+                                                <div *ngIf="form.submitted && name.errors?.required"
+                                                    class="text-sm text-red pl-2 pr-2">
+                                                    Please enter Patient name</div>
                                             </div>
 
                                         </div>
@@ -167,9 +169,9 @@
                                                         [(ngModel)]="service.ExamData.referringDoctor" required>
                                                 </div>
 
-                                                <!-- <div *ngIf="form.submitted && referringDoctor.errors?.required"
+                                                <div *ngIf="form.submitted && referringDoctor.errors?.required"
                                                     class="text-sm text-red pl-2 pr-2">
-                                                    Enter Referring Doctor name</div> -->
+                                                    Enter Referring Doctor name</div>
 
                                             </div>
                                         </div>
@@ -189,9 +191,9 @@
                                                         [(ngModel)]="service.ExamData.studyDate" required>
                                                 </div>
 
-                                                <!-- <div *ngIf="form.submitted && studyDate.errors?.required"
+                                                <div *ngIf="form.submitted && studyDate.errors?.required"
                                                     class="text-sm text-red pl-2 pr-2">
-                                                    Enter Study Date</div> -->
+                                                    Enter Study Date</div>
 
                                             </div>
                                         </div>
@@ -228,16 +230,3 @@
         </div>
     </div>
 </form>
-<div [style.display]="showModal ? 'block' : 'none'" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title ml-10" style="margin-top: 3px;width: auto;font-size: 20px;margin-left: 1.8cm;">
-                    The Patient is Added</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" (click)="hide()">&times;</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>

@@ -34,10 +34,8 @@
                 <input class="form-control myinput" placeholder="Email" type="email" name="email" #email="ngModel"
                   value="" [(ngModel)]="service.Login.email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                   required>
-                
                 <!-- name="email" #email="ngModel" value = "" [(ngModel)] = "Doctor.email"> -->
               </div>
-              <span class="help-block error-message" *ngIf="email.invalid && email.touched">Please enter a valid email</span>
               <!-- <div *ngIf="form.submitted && email.errors?.required" class="text-sm text-red pl-2 pr-2">
                 Please enter Email Address</div>
               <div *ngIf="form.submitted && email.errors?.pattern" class="text-sm text-red pl-2 pr-2">
@@ -53,7 +51,6 @@
                   #password="ngModel" value="" [(ngModel)]="service.Login.password" #password="ngModel" required>
                 <!-- name="password" #password="ngModel"  value = "" [(ngModel)] = "Doctor.password"> -->
               </div>
-              <span class="help-block error-message" *ngIf="password.invalid && password.touched">Please enter a valid Password</span>
               <!-- <div *ngIf="form.submitted && password.errors?.required" class="text-sm text-danger pl-2 pr-2"> Password
                 is Required !!</div> -->
             </div>
@@ -140,11 +137,10 @@
   </div>
 </div> -->
 <div  [style.display]="showModal ? 'block' : 'none'" class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title ml-10" style="margin-top: 4px;">Wrong Email or Password</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<h5 class="modal-title ml-10" style="margin-top: 4px;">Wrong Email or Password</h5>        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" (click)="hide()">&times;</span>
         </button>
       </div>

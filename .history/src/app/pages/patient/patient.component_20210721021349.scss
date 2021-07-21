@@ -1,0 +1,14 @@
+// .ni{
+//     // color: linear-gradient(87deg, #b4cce1 0, adjust-hue(#6adaff, 25%) 100%);
+//     color: navy;
+// }
+// .fas{
+//     color: navy;
+// }
+.error-message{
+    font-size: 11px;
+    color: red
+  }
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}

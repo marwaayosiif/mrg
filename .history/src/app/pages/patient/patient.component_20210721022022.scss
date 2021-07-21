@@ -1,7 +1,16 @@
-.modal-body {
-    position: relative;
-    flex: 1 1 auto;
-    padding: 0rem;
+// .ni{
+//     // color: linear-gradient(87deg, #b4cce1 0, adjust-hue(#6adaff, 25%) 100%);
+//     color: navy;
+// }
+// .fas{
+//     color: navy;
+// }
+.error-message{
+    font-size: 11px;
+    color: red
+  }
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
 }
 .modal-header {
     display: flex;
@@ -11,17 +20,10 @@
     border-bottom: 0 solid #e9ecef;
     border-top-left-radius: 0.4375rem;
     border-top-right-radius: 0.4375rem;
+    b
     // width: fit-content;
-    background-color: rgb(255, 51, 82);
 }
 .modal-dialog {
  
     width: 360px;
   }
-  .error-message{
-    font-size: 11px;
-    color: red
-  }
-input.ng-invalid.ng-touched{
-    border: 1px solid red;
-}
