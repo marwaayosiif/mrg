@@ -28,12 +28,3 @@
 navbar{
   background: linear-gradient(87deg, #b4cce1 0, adjust-hue(#6adaff, 25%) 100%);
 }
-hr {
-  height: 4px;
-  width: 40px;
-  background-color: #2e3341;
-  margin-left: 0;
-  margin-top: 0;
-  border: 0;
-  text-align: left;
-}
