@@ -42,7 +42,7 @@ export class TableListComponent implements OnInit {
   //   })
   //   )}
 
-  open(content1,content2,patientname:string) {
+  open(content1,content2,patientname:number) {
     console.log(patientname)
     // console.log(name);
     // this.pdfScr = '';
@@ -51,12 +51,12 @@ export class TableListComponent implements OnInit {
     //   var coded = res;
     // })
     // console.log(`https://mrgf.azurewebsites.net/api/report/${patientname}`)
-    this.http.post('https://mrgf.azurewebsites.net/api/report/',patientname).subscribe(res=> {
+    this.http.get(`https://mrgf.azurewebsites.net/api/report/${patientname}`).subscribe(res=> {
       console.log(res)
       let result 
       
-      var retrievedImage = 'data:image/jpeg;base64,' + result.tileImage;
-      if (retrievedImage){
+      var retrievedImage = 'data:image/jpeg;base64,' + res;
+      if (res != "Not Found"){
         console.log(retrievedImage)
         // URL.createObjectURL(result)
         this.pdfScr = retrievedImage
@@ -66,7 +66,8 @@ export class TableListComponent implements OnInit {
           this.closeResult = ` ${this.getDismissReason(reason)}`;
         });
       }
-      else{
+      else {
+        console.log("dakhlt ??")
         this.modalService.open(content2, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
           this.closeResult = ` ${result}`;
         }, (reason) => {

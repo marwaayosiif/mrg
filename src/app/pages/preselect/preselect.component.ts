@@ -156,11 +156,7 @@ export class PreselectComponent implements OnInit {
     if (url.length > 10000) {
       this.urls = this.urls.filter((a) => a !== url);
       this.files = this.files.filter((a) => a !== this.files[i]);
-    }
-    else {
-      var array = url.split("\\", 8)
-      console.log(array[7])
-      this.http.delete("https://mrgf.azurewebsites.net/api/deleteImage/" + url).subscribe(res => {
+      this.http.delete(`https://mrgf.azurewebsites.net/api/image/${this.service.examDataId}`).subscribe(res => {
         console.log(res)
       })
     }

@@ -113,7 +113,7 @@ export class ReportComponent implements OnInit {
       // window.open(URL.createObjectURL(output));
       const formData = new FormData();
 
-      formData.append('Image', output , this.service.ExamData.patientID);
+      formData.append('Image', output , `${this.service.examDataId}`);
       
       if(cond === 'download'){
         window.open(URL.createObjectURL(output));
