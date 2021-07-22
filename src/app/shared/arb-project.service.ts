@@ -96,5 +96,4 @@ export class ArbProjectService {
     this.http.get(this.examDataUrl).toPromise().then(
       res => {this.list = res as ExamData[]});
   }
-
 }

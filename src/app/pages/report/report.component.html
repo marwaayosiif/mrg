@@ -211,7 +211,7 @@
         <!-- </div> -->
           <h1 class="display-4"><u>Recommendation:</u></h1>
           <div *ngFor = " let rec of RecommendationList">
-            <div *ngIf = "service.Patient.finalAssessment.recommendationId === rec.id">{{rec.name}}</div>
+            <div *ngIf = "service.Patient.finalAssessment.recommendationId == rec.id">{{rec.name}}</div>
           </div>
           <!-- "hena el mfrod tab l taht dh satr w dh satr" -->
           <div *ngIf = "service.Patient.finalAssessment.recommendationText != ''">Other Recommendation: {{service.Patient.finalAssessment.recommendationText}}</div>

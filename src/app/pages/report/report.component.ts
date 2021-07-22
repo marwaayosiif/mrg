@@ -43,54 +43,6 @@ export class ReportComponent implements OnInit {
 
   }
 
-  // generatePDF() {
-  //   // var data = document.getElementById('contentToConvert') as HTMLCanvasElement;
-  //   // console.log(data)
-  //   var data = document.getElementById("contentToConvert") as HTMLCanvasElement;
-  //   console.log(data)
-  //   html2canvas(data).then(canvas=>{
-  //   var ctx = canvas.getContext("2d");
-  //   let image = new Image();
-  //   image.onload = () => {
-  //     ctx.drawImage(
-  //       image,
-  //       0, //sx
-  //       0, //sy
-  //       208, //sw
-  //       300, //sh
-  //       0, //dx
-  //       0, //dy
-  //       canvas.width, //dw
-  //       canvas.height //dh
-  //     );
-  //   };
-  //   image.src = canvas.toDataURL();
-  //   let pdf = new jspdf('p', 'mm', "a4");
-  //   // var position = 0;
-  //   pdf.addImage(image.src, 'PNG',0,0,208,300)
-  //   var blob = pdf.output("blob");
-  //   window.open(URL.createObjectURL(blob));
-  //   });
-
-  //   // html2canvas(data).then(canvas => {
-  //   //   console.log(canvas.height)
-  //   //   console.log(canvas.width)
-  //   //   canvas.height = 900;
-  //   //   canvas.width = 750;
-  //   //   var imgWidth = 200;
-  //   //   var imgHeight = canvas.height * 180 / canvas.width;
-  //   //   // var imgHeight = 600;
-  //   //   console.log(imgHeight)
-  //   //   const contentDataURL = canvas.toDataURL('image/png')
-  //   //   console.log(contentDataURL)
-  //   //   let pdf = new jspdf('p', 'mm', [imgWidth,imgHeight]);
-  //   //   // var position = 0;
-  //   //   pdf.addImage(contentDataURL, 'PNG', 0, 0, imgWidth, imgHeight)
-  //   //   var blob = pdf.output("blob");
-  //   //   window.open(URL.createObjectURL(blob));
-  //   // });
-  //   }
-
   PDF(cond:string) {
     const exportedContent = document.getElementById('contentToConvert');
     html2canvas(exportedContent,{ scrollY: -window.scrollY , scrollX: window.scrollX}
@@ -115,14 +67,14 @@ export class ReportComponent implements OnInit {
 
       formData.append('Image', output , `${this.service.examDataId}`);
       
-      if(cond === 'download'){
+      if(cond === 'download')
+      {
         window.open(URL.createObjectURL(output));
       }
       if(cond === 'export')
       {
         this.http.post("https://mrgf.azurewebsites.net/api/report",formData).subscribe(res=> console.log(res));
       }
-      
       
     });
   }

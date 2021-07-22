@@ -36,7 +36,7 @@
                                         <ul style="list-style-type:none;padding-top: 15px;">
                                             <li>
                                                 <h4 class="form-group focused">
-                                                    <input type="radio" name="massShape" value="Oval" id=i [disabled] = 'service.index == 0'
+                                                    <input type="radio" name="massShape" value="Oval" id=i 
                                                     [checked]=" service.Patient.clinicalInfo.massSpecifications[i].massShape == Oval? true: false"
                                                      [(ngModel)]="pd.massShape" class="form-control " >
 
@@ -45,7 +45,7 @@
                                             </li>
                                             <li>
                                                 <h4 class="form-group focused">
-                                                    <input type="radio" name="massShape" value="Round" id=i [disabled] = 'service.index == 0'
+                                                    <input type="radio" name="massShape" value="Round" id=i
                                                         [checked]=" service.Patient.clinicalInfo.massSpecifications[i].massShape == Round? true: false"
                                                         [(ngModel)]="pd.massShape" class="form-control ">
                                                     <span class="checkmark">Round</span>
@@ -53,7 +53,7 @@
                                             </li>
                                             <li>
                                                 <h4 class="form-group focused">
-                                                <input type="radio" name="massShape" value="Irregular" id=i [disabled] = 'service.index == 0'
+                                                <input type="radio" name="massShape" value="Irregular" id=i 
                                                     [checked]=" (service.Patient.clinicalInfo.massSpecifications[i].massShape == Irregular)"
                                                     [(ngModel)]="pd.massShape" class="form-control ">
                                                 <span class="checkmark">Irregular</span>
@@ -74,7 +74,7 @@
                             style="margin-right: 15px; padding-top: 15px;">
                             <strong>Margin</strong>
                         </h3>
-                        <select [disabled] = 'service.index == 0' class="custom-select" name="massMarginId" #massMarginId="ngModel"
+                        <select class="custom-select" name="massMarginId" #massMarginId="ngModel"
                             [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].massMarginId"
                             style="width:150px;" >
                             <option value="0"> SELECT</option>
@@ -89,7 +89,7 @@
                         <h5 class="form-control-label" for="Mammo-history"
                             style="margin-right: 15px; padding-top: 15px;">
                             Density </h5>
-                        <select [disabled] = 'service.index == 0' class="custom-select" name="massDensityId" #massDensityId="ngModel"
+                        <select  class="custom-select" name="massDensityId" #massDensityId="ngModel"
                             [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].massDensityId"
                             style="width:150px;">
                             <option value="0"> SELECT</option>
@@ -118,7 +118,7 @@
                             style="margin-right: 15px; padding-bottom:20 px;">
                             <strong> Laterality</strong> </label>
 
-                        <input  [disabled] = 'service.index == 0' type="text" id="TEXT_1450682011285" name="laterality" data-field-type="TEXT"
+                        <input   type="text" id="TEXT_1450682011285" name="laterality" data-field-type="TEXT"
                             data-field-completion-action="NONE" #laterality="ngModel"
                             [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].laterality"
                             style="width: 150px; height: 50px;" class="form-control" placeholder="ex: Left" />
@@ -134,7 +134,7 @@
                         <label class="form-control-label" for="Mammo-history"
                             style="margin-right: 15px; padding-bottom: 10px;">
                             <strong> Quadrant </strong> </label>
-                        <select [disabled] = 'service.index == 0' class="custom-select" name="quadrantId" #quadrantId="ngModel"
+                        <select  class="custom-select" name="quadrantId" #quadrantId="ngModel"
                             [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].quadrantId"
                             style="width:150px;">
                             <option value="0"> SELECT</option>
@@ -148,7 +148,7 @@
                         <label class="form-control-label" for="Mammo-history"
                             style="margin-right: 15px;  padding-bottom: 10px;"><strong> Clock
                                 face</strong></label>
-                        <select [disabled] = 'service.index == 0' class="custom-select" name="clockFaceId" #clockFaceId="ngModel"
+                        <select  class="custom-select" name="clockFaceId" #clockFaceId="ngModel"
                             [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].clockFaceId"
                             style="width:150px;">
                             <option value="0"> SELECT</option>
@@ -166,7 +166,7 @@
 
                         <label class="form-control-label" style="margin-right: 15px; padding-top: 9px;"><strong>
                                 Depth:</strong> </label>
-                        <input [disabled] = 'service.index == 0' type="number" id="TEXT_1450682011285" name="depth" data-field-type="Number"
+                        <input  type="number" id="TEXT_1450682011285" name="depth" data-field-type="Number"
                             data-field-completion-action="NONE" #depth="ngModel" min="0" max="100" style="width: 50px; height:30px;"
                             [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].depth"
                             class="form-control" placeholder="0"  />
@@ -182,7 +182,7 @@
                                 from the
                                 nipple:</strong></label>
                              
-                        <input [disabled] = 'service.index == 0' type="number" id="TEXT_1450682011285" name="distanceFromTheNipple" data-field-type="NUMBER"
+                        <input  type="number" id="TEXT_1450682011285" name="distanceFromTheNipple" data-field-type="NUMBER"
                             data-field-completion-action="NONE" #distanceFromTheNipple="ngModel"
                              min="0" max="100"
                             [(ngModel)]="service.Patient.clinicalInfo.massSpecifications[i].distanceFromTheNipple"
