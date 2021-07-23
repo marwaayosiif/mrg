@@ -27,6 +27,7 @@ export class ReportComponent implements OnInit {
   patient: Patient = new Patient();
   lenght: number = 0;
   ngOnInit() {
+    console.log("mass salma", this.massSpecifications)
     this.service.getCombo('GetBiRads')
     .subscribe(res => this.BiRadslist = res as []);
     this.service.getCombo('GetRecommendation')

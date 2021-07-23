@@ -20,9 +20,9 @@ export class ArbProjectService {
   };
   // https://mrgf.azurewebsites.net/
   // http://localhost:57645/
-  readonly APIUrl = 'https://mrgf.azurewebsites.net/api';
-  readonly ComboUrl = 'https://mrgf.azurewebsites.net/api/combobox';
-  readonly  examDataUrl = 'https://mrgf.azurewebsites.net/api/ExamData';
+  readonly APIUrl = 'http://localhost:57645/api';
+  readonly ComboUrl = 'http://localhost:57645/api/combobox';
+  readonly  examDataUrl = 'http://localhost:57645/api/ExamData';
   
   examDataId:number = 0;
   PatientId:number = 0;

@@ -99,7 +99,7 @@ export class NgbdTabsetSelectbyid  implements OnInit{
       res=>{
         this.service.PatientId = res['id'];
         this.service.Patient = res as Patient;
-        console.log(res);
+        console.log(res['clinicalInfo']);
         console.log("ANAA 3MLT INSERT")
         // this.resetForm(form,data);
       },
