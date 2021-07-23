@@ -57,7 +57,10 @@
             
             <ng-template #thenBlockComplain> : {{service.Patient.generalInfo.complain}}, </ng-template>
             <ng-template #elseBlockComplain>,  </ng-template>
-            the pain was in the {{service.Patient.clinicalInfo.massSpecifications[0].laterality}} breast
+            <div *ngIf="(massSpecifications.length == 0); then BlockMass else elseMass"></div>
+            <ng-template #BlockMass>the pain was in the {{service.Patient.clinicalInfo.massSpecifications[0].laterality}} breast</ng-template>
+            <!-- the pain was in the {{service.Patient.clinicalInfo.massSpecifications[0].laterality}} breast -->
+            <ng-template #elseMass></ng-template>
             and this examination was in {{service.Patient.generalInfo.examDate |date:'dd.MM.yyyy'}}
           </div>
           
@@ -118,77 +121,83 @@
           
           <div>
             <h3>Mass Description</h3>
-            <div class="table-responsive">
+            <div *ngIf="(massSpecifications.length !=0); then thenBlockTable else elseBlockTable"></div>
+            <ng-template #thenBlockTable>
+              <div class="table-responsive">
 
             
-            <table class="table table-striped" style=" table-layout: fixed !important; display:table-header-group;">
-              
-              <thead style="max-width:100% !important;table-layout: fixed ">
-                <tr>
-                  <th>
-                    No.
-                  </th>
-                  <th>
-                    Shape
-                  </th>
-                  <th>
-                    Margin
-                  </th>
-                  <th>
-                    Density
-                  </th>
+                <table class="table table-striped" style=" table-layout: fixed !important; display:table-header-group;">
                   
-                  <th>
-                    laterality
-                  </th>
-                  <th>
-                    O'Clock <br> Face
-                  </th>
-                  <th>
-                    Quadrant
-                  </th>
-                  <th>
-                    Depth<br>(Cm)
-                  </th>
-                  <th>
-                    D.F.N<br>(Cm)
-                  </th>
-                </tr>
-              </thead>
-              <tbody style="max-width:100% !important;table-layout: fixed" >
-                <tr *ngFor = "let pd of massSpecifications ;let i = index" >
-                  <td>
-                    {{i+1}}
-                  </td>
-                  <td>
-                    {{pd.massShape}}
-                  </td>
-                  <td>
-                    {{pd.massMargin.name}}
-                  </td>
-                  <td>
-                    {{pd.massDensity.name}}
-                  </td>
-                  <td>
-                    {{pd.laterality}}
-                  </td>
-                  <td>
-                    {{pd.clockFace.name}}
-                  </td>
-                  <td>
-                    {{pd.quadrant.name}}
-                    
-                  </td>
-                  <td>
-                    {{pd.depth}}
-                  </td>
-                  <td>
-                    {{pd.distanceFromTheNipple}}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+                  <thead style="max-width:100% !important;table-layout: fixed ">
+                    <tr>
+                      <th>
+                        No.
+                      </th>
+                      <th>
+                        Shape
+                      </th>
+                      <th>
+                        Margin
+                      </th>
+                      <th>
+                        Density
+                      </th>
+                      
+                      <th>
+                        laterality
+                      </th>
+                      <th>
+                        O'Clock <br> Face
+                      </th>
+                      <th>
+                        Quadrant
+                      </th>
+                      <th>
+                        Depth<br>(Cm)
+                      </th>
+                      <th>
+                        D.F.N<br>(Cm)
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody style="max-width:100% !important;table-layout: fixed" >
+                    <tr *ngFor = "let pd of massSpecifications ;let i = index" >
+                      <td>
+                        {{i+1}}
+                      </td>
+                      <td>
+                        {{pd.massShape}}
+                      </td>
+                      <td>
+                        {{pd.massMargin.name}}
+                      </td>
+                      <td>
+                        {{pd.massDensity.name}}
+                      </td>
+                      <td>
+                        {{pd.laterality}}
+                      </td>
+                      <td>
+                        {{pd.clockFace.name}}
+                      </td>
+                      <td>
+                        {{pd.quadrant.name}}
+                        
+                      </td>
+                      <td>
+                        {{pd.depth}}
+                      </td>
+                      <td>
+                        {{pd.distanceFromTheNipple}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+            <ng-template #elseBlockTable>
+              No Mass Found
+            </ng-template>
           </div>
           
 
