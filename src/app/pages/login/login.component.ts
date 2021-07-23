@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   }
   
   open(content) {
-    console.log(name);
+    // console.log(name);
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = ` ${result}`;
     }, (reason) => {
@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
   OnSubmit(form: NgForm,data:string) {
     this.service.PostLogin().subscribe(
       res => {
-        console.log(res);
+        // console.log(res);
         if (res == "Wrong password" || res == "Not Found" || res == "Error") {
           this.flag = false;
           // this.open(content)
@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit {
 
         }
         else {
-          console.log(res['id']);
+          // console.log(res['id']);
           this.service.Doctor = res as Doctor
           this.service.DoctorId = res['id'];
           this.router.navigate([this.redirectUrl]);

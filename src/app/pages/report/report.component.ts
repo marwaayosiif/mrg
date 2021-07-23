@@ -27,18 +27,16 @@ export class ReportComponent implements OnInit {
   patient: Patient = new Patient();
   lenght: number = 0;
   ngOnInit() {
-    console.log("mass salma", this.massSpecifications)
+   
     this.service.getCombo('GetBiRads')
     .subscribe(res => this.BiRadslist = res as []);
     this.service.getCombo('GetRecommendation')
     .subscribe(res => this.RecommendationList = res as []);
 
-    
-    console.log(this.massSpecifications.length)
+
 
     this.service.getOne(this.service.examDataId, 'examData').subscribe(res => {
       this.service.ExamData = res as ExamData;
-      console.log(this.service.ExamData, this.service.Patient);
     });
 
 
@@ -48,13 +46,11 @@ export class ReportComponent implements OnInit {
     const exportedContent = document.getElementById('contentToConvert');
     html2canvas(exportedContent,{ scrollY: -window.scrollY , scrollX: window.scrollX}
       ).then(canvas => {
-      console.log(canvas.height)
-      console.log(canvas.width)
+      
       // 203
       //180
       const fileWidth = 180;
       const fileHeight = canvas.height * fileWidth / canvas.width;
-      console.log(fileHeight) 
       const fileURI = canvas.toDataURL()
       // 225,505
       const PDF = new jspdf('p', 'mm', [200,300]);
@@ -68,13 +64,14 @@ export class ReportComponent implements OnInit {
 
       formData.append('Image', output , `${this.service.examDataId}`);
       
+      
       if(cond === 'download')
       {
         window.open(URL.createObjectURL(output));
       }
       if(cond === 'export')
       {
-        this.http.post("https://mrgf.azurewebsites.net/api/report",formData).subscribe(res=> console.log(res));
+        this.http.post("http://localhost:57645/api/report",formData).subscribe(res=> console.log(res));
       }
       
     });

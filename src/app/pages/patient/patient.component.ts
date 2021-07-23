@@ -86,7 +86,7 @@ export class PatientComponent implements OnInit {
     this.showModal = false;
   }
   OnSubmit(form:NgForm,data:string){
-    console.log(this.service.ExamData.id);
+    // console.log(this.service.ExamData.id);
     this.service.ExamData.doctorId = this.service.DoctorId;
     if(this.service.ExamData.id == 0)
         this.insertRecord(form,data);
@@ -96,7 +96,7 @@ export class PatientComponent implements OnInit {
     this.show()
 }
 // patientForm(selectedRecord:ExamData){
-//   console.log(selectedRecord);
+//   // console.log(selectedRecord);
 // }
 //post('ExamData',ExamData)
 insertRecord(form:NgForm,data:string){
@@ -113,7 +113,7 @@ insertRecord(form:NgForm,data:string){
 updateRecord(form:NgForm,data:string){
   this.service.Put(data).subscribe(
     res=>{
-      console.log(res)
+      // console.log(res)
       this.resetForm(form);
       // this.refreshList();
     },

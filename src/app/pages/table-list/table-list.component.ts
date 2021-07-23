@@ -43,21 +43,21 @@ export class TableListComponent implements OnInit {
   //   )}
 
   open(content1,content2,patientname:number) {
-    console.log(patientname)
-    // console.log(name);
+    // console.log(patientname)
+    // // console.log(name);
     // this.pdfScr = '';
     // this.Test = `assets/${name}.pdf`;
     // this.http.get("").subscribe(res=>{
     //   var coded = res;
     // })
-    // console.log(`https://mrgf.azurewebsites.net/api/report/${patientname}`)
-    this.http.get(`https://mrgf.azurewebsites.net/api/report/${patientname}`).subscribe(res=> {
+    // // console.log(`http://localhost:57645/api/report/${patientname}`)
+    this.http.get(`http://localhost:57645/api/report/${patientname}`).subscribe(res=> {
       console.log(res)
       let result 
       
       var retrievedImage = 'data:image/jpeg;base64,' + res;
       if (res != "Not Found"){
-        console.log(retrievedImage)
+        // console.log(retrievedImage)
         // URL.createObjectURL(result)
         this.pdfScr = retrievedImage
         this.modalService.open(content1, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -67,7 +67,7 @@ export class TableListComponent implements OnInit {
         });
       }
       else {
-        console.log("dakhlt ??")
+        // console.log("dakhlt ??")
         this.modalService.open(content2, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
           this.closeResult = ` ${result}`;
         }, (reason) => {
@@ -111,20 +111,20 @@ export class TableListComponent implements OnInit {
   }
  
   preselect(id:number){
-    console.log(this.list)
+    // console.log(this.list)
     this.service.examDataId = id ;
     this.service.tabs = [];
     this.service.getPatient(this.service.examDataId,'Patient','examId').subscribe(res =>{
       if (res != null && res != "Not Found"){
       this.service.Patient = res as Patient
       this.service.PatientId = res['id'];
-      console.log("gbtha");
-      console.log(this.service.Patient.clinicalInfo.massSpecifications);
+      // console.log("gbtha");
+      // console.log(this.service.Patient.clinicalInfo.massSpecifications);
       this.service.index = this.service.Patient.clinicalInfo.massSpecifications.length ;
       for (let i = 1 ; i <= this.service.index; i++){
         this.service.tabs.push('Mass' + i);
       }
-      console.log(this.service.tabs);
+      // console.log(this.service.tabs);
       this.router.navigate([this.redirectUrl]);
       this.redirectUrl = null;
     
@@ -145,7 +145,7 @@ export class TableListComponent implements OnInit {
       this.service.ExamData = res as ExamData
       console.log(res);
     })
-    console.log("eeeh p2a mna fe el edit ahw");
+    // console.log("eeeh p2a mna fe el edit ahw");
     this.router.navigate(['dash/patient']);
   }
   Search(){

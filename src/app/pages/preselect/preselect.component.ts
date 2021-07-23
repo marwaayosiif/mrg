@@ -58,7 +58,7 @@ export class PreselectComponent implements OnInit {
   onProductSubmit(data) {
     this.createProduct = false;
     this.message = data.message;
-    console.log(this.message)
+    // console.log(this.message)
   }
 
   constructor(public service: ArbProjectService, private http: HttpClient, private sanitizer: DomSanitizer) {
@@ -66,43 +66,20 @@ export class PreselectComponent implements OnInit {
    }
    retrievedImage:any
   ngOnInit(): void {
-    console.log(this.service.examDataId);
-    this.http.get(`https://mrgf.azurewebsites.net/api/image/${this.service.examDataId}`).subscribe(res => {
-      console.log(res)
+    this.http.get(`http://localhost:57645/api/image/${this.service.examDataId}`).subscribe(res => {
       for(var file of res as Array<string> )
       {
-
       this.retrievedImage = 'data:image/jpeg;base64,' + file;
-
       this.urls.push(this.retrievedImage);
       }
-
-
-
     }, err => {
       console.log(err);
     });
 
   }
 
-  // async getBase64ImageFromUrl(imageUrl) {
-  //   var res = await fetch(imageUrl);
-  //   var blob = await res.blob();
-
-  //   return new Promise((resolve, reject) => {
-  //     var reader = new FileReader();
-  //     reader.addEventListener("load", function () {
-  //       resolve(reader.result);
-  //     }, false);
-
-  //     reader.onerror = () => {
-  //       return reject(this);
-  //     };
-  //     reader.readAsDataURL(blob);
-  //   })
-  // }
   handleFileInput(event) {
-    this.urls = [];
+    
     this.fileToUploads = event.target.files;
     if (this.fileToUploads) {
       for (var image of this.fileToUploads) {
@@ -115,10 +92,6 @@ export class PreselectComponent implements OnInit {
         var reader = new FileReader();
         reader.onload = (event: any) => {
           this.urls.push(event.target.result);
-          for(let url of this.urls)
-          {
-            console.log(url)
-          }
         }
         reader.readAsDataURL(this.THEfile);
       }
@@ -126,25 +99,20 @@ export class PreselectComponent implements OnInit {
   }
   OnSubmitImage(Image) {
     for (this.file of this.files) {
-      console.log(this.file)
-      this.postFile(this.file).subscribe(data => { console.log(data) });
+      // console.log(this.file)
+      this.postFile(this.file).subscribe(data => { 
+        // console.log(data)
+       });
 
     }
     // this.postFile(this.fileToUpload).subscribe(data=>{console.log(data)});
   }
 
   postFile(fileToUpload: File) {
-    let no: number = this.service.examDataId;
-    const endpoint = 'https://mrgf.azurewebsites.net/api/image';
+    const endpoint = 'http://localhost:57645/api/image';
     const formData: FormData = new FormData();
-    var array = fileToUpload.name.split(".", 2)
-    console.log(array)
-    formData.append('Image', fileToUpload, array[0] + `_${no}.` + array[1]);
-    // formData.append('id', no as string);
-    this.image.patientId = no;
-    this.image.imageName = fileToUpload.name;
-    // this.image.imageFile = fileToUpload;
-    console.log(fileToUpload.name);
+    formData.append('Image', fileToUpload, `${this.service.examDataId}`);
+
     return this.http
       .post(endpoint, formData);
   }
@@ -152,14 +120,14 @@ export class PreselectComponent implements OnInit {
 
 
   private deleteImage(url: any, i: number, event): void {
-    console.log(i)
-    if (url.length > 10000) {
+    // console.log(i)
+    // if (url.length > 10000) {
       this.urls = this.urls.filter((a) => a !== url);
       this.files = this.files.filter((a) => a !== this.files[i]);
-      this.http.delete(`https://mrgf.azurewebsites.net/api/image/${this.service.examDataId}`).subscribe(res => {
-        console.log(res)
+      this.http.delete(`http://localhost:57645/api/image/${this.service.examDataId}/${i}`).subscribe(res => {
+        // console.log(res)
       })
-    }
+    // }
 
   }
 
@@ -170,6 +138,8 @@ export class PreselectComponent implements OnInit {
 
     this.service.Post(data).subscribe(
       res => {
+        console.log("data",data)
+        console.log("res",res)
         this.resetForm(form, data);
       },
       err => {

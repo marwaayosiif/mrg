@@ -44,7 +44,7 @@
             <div class="row ">
               <div *ngFor="let url of urls ; let i = index" class="col-md-6 img-container"><br>
                 <a (click) = "show(url)">
-                  <img  style="float: left" [src]="url" width="180 " ></a> <br>          
+                  <img  style="float: left" [src]="url" width="180" ></a> <br>          
                 <span class="delete-entry" style="cursor: pointer;" (click)="deleteImage(url,i)">x</span>
 
 

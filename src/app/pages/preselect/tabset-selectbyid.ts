@@ -18,7 +18,7 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   constructor(public service:ArbProjectService,private http:HttpClient,  private router:Router) {}
   
   onClick(route,id:number){
-    console.log(this.service.Patient);
+    // console.log(this.service.Patient);
     this.router.navigate([route])
   }
   patientName:any
@@ -74,7 +74,7 @@ export class NgbdTabsetSelectbyid  implements OnInit{
     this.service.Patient.clinicalInfo.featureId = this.service.PatientId;
 
     // this.InsertFeatures(form,data);
-    console.log(this.service.Patient.generalInfo,this.service.Patient.clinicalInfo,this.service.Patient.finalAssessment);
+    // console.log(this.service.Patient.generalInfo,this.service.Patient.clinicalInfo,this.service.Patient.finalAssessment);
     if ((this.service.Patient.generalInfo.id == 0) && (this.service.Patient.clinicalInfo.id == 0) && (this.service.Patient.finalAssessment.id == 0)){
 
         this.InsertFeatures(form,data);
@@ -84,7 +84,7 @@ export class NgbdTabsetSelectbyid  implements OnInit{
     else {
         this.UpdateFeatures(form,data);
         let mass_Spec = this.service.Patient.clinicalInfo.massSpecifications['id'];
-        console.log("B3DEL FEEH NOW",mass_Spec);
+        // console.log("B3DEL FEEH NOW",mass_Spec);
     }
 
   }
@@ -92,15 +92,17 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   passingPatienId(id:number)
   {
     this.service.PatientId = id;
-    console.log("YARAAAB",this.service.examDataId)
+    // console.log("YARAAAB",this.service.examDataId)
   }
   InsertFeatures(form:NgForm,data:string){
     this.service.Post(data).subscribe(
       res=>{
+        console.log("data",this.service.Patient.finalAssessment)
+        console.log("res",res['finalAssessment'])
         this.service.PatientId = res['id'];
         this.service.Patient = res as Patient;
-        console.log(res['clinicalInfo']);
-        console.log("ANAA 3MLT INSERT")
+        // console.log(res['clinicalInfo']);
+        // console.log("ANAA 3MLT INSERT")
         // this.resetForm(form,data);
       },
       err=>{
@@ -110,11 +112,13 @@ export class NgbdTabsetSelectbyid  implements OnInit{
   UpdateFeatures(form:NgForm,data:string){
     this.service.Put(data).subscribe(
       res=>{
+        console.log("data put",this.service.Patient.finalAssessment)
+        console.log("res put",res['finalAssessment'])
         this.resetForm(form,data);
-        console.log("Put Req",res);
+        // console.log("Put Req",res);
         this.service.Patient = res as Patient; 
         // this.refreshList();
-        console.log(this.service.Patient);
+        // console.log(this.service.Patient);
       },
       err=>{
         console.log(err);

@@ -96,6 +96,7 @@ export class FinalAssessment{
     conc: string = '';
 }
 
+
 export class Patient{
     id: number = 0;
     clinicalInfoId: number= 0;

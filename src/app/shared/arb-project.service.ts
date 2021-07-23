@@ -18,7 +18,7 @@ export class ArbProjectService {
       'Access-Control-Allow-Origin':'*'
     })
   };
-  // https://mrgf.azurewebsites.net/
+  // http://localhost:57645/
   // http://localhost:57645/
   readonly APIUrl = 'http://localhost:57645/api';
   readonly ComboUrl = 'http://localhost:57645/api/combobox';
