@@ -15,15 +15,6 @@ import * as Rellax from 'rellax';
     `],
   styleUrls: ['./homecomponent.component.css']
 })
-// export class HomecomponentComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//   }
-
-// }
-
 export class HomecomponentComponent implements OnInit, OnDestroy {
   data : Date = new Date();
 

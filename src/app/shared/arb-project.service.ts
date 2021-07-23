@@ -32,7 +32,6 @@ export class ArbProjectService {
   Doctor:Doctor = new Doctor();
   general:GeneralInfo[]
   list:ExamData[];
-  // console.log(list)
   FinalAssessment:FinalAssessment = new FinalAssessment();
   ClinicalInfo:ClinicalInfo = new ClinicalInfo();
   Patient:Patient = new Patient();
@@ -85,11 +84,9 @@ export class ArbProjectService {
     return (this.http.get(`${this.APIUrl}/${APIUrl}/${id}`));
   }
   getPatient(id,APIUrl,name:string){
-    console.log(`${this.APIUrl}/${APIUrl}/${id}/"${name}"`);
     return (this.http.get(`${this.APIUrl}/${APIUrl}/${id}/"${name}"`));
   }
   getExamDataOfDoctor(id,APIUrl){
-    console.log(`${this.APIUrl}/${APIUrl}/${id}`)
     return (this.http.get(`${this.APIUrl}/${APIUrl}/${id}`));
   }
   getExamData(){

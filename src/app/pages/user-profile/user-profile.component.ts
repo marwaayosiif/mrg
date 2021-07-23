@@ -13,7 +13,6 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
    
   }
- 
   OnSubmit(form:NgForm,data:string){
     this.service.Put(data).subscribe(
       res=>{

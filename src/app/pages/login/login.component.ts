@@ -1,18 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-
-// import { Router, ActivatedRoute } from '@angular/router';
-// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { first } from 'rxjs/operators';
-
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl } from '@angular/forms';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from "@angular/common/http";
 import { Doctor, Login } from 'src/app/shared/arb-project.model';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { content } from 'html2canvas/dist/types/css/property-descriptors/content';
-
 
 @Component({
   selector: 'app-login',
@@ -29,15 +21,12 @@ export class LoginComponent implements OnInit {
   Login: Login = new Login();
   flag: boolean = true;
   showModal: boolean;
-  display='none'; //default Variable
-  // content: string;
-
+  display='none';
   
   ngOnInit() {
   }
   
   open(content) {
-    // console.log(name);
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = ` ${result}`;
     }, (reason) => {
@@ -64,39 +53,22 @@ export class LoginComponent implements OnInit {
     this.showModal = false;
   }
 
-//  openModalDialog(){
-//     this.display='block'; //Set block css
-//  }
 
-//  closeModalDialog(){
-//   this.display='none'; //set none css after close dialog
-//  }
- 
   OnSubmit(form: NgForm,data:string) {
     this.service.PostLogin().subscribe(
       res => {
-        // console.log(res);
         if (res == "Wrong password" || res == "Not Found" || res == "Error") {
           this.flag = false;
-          // this.open(content)
           this.show()
-
         }
         else {
-          // console.log(res['id']);
           this.service.Doctor = res as Doctor
           this.service.DoctorId = res['id'];
           this.router.navigate([this.redirectUrl]);
           this.redirectUrl = null;
           this.flag = true;
-
         }
-
-      }
-      ,
-  err=>{
-  console.log("Not found send error msg");
-})
-    };
+      })
+      };
   
   }

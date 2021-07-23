@@ -1,15 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ElementRef, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl } from '@angular/forms';
 import { ArbProjectService } from 'src/app/shared/arb-project.service';
 import { NgForm } from '@angular/forms';
-import html2canvas from 'html2canvas';
 import { HttpClient } from "@angular/common/http";
-import {
-  ExamData, Patient, Doctor, image,
-  GeneralInfo, ClinicalInfo, FinalAssessment, Login, features
-} from 'src/app/shared/arb-project.model';
+import {image,GeneralInfo, ClinicalInfo, FinalAssessment} from 'src/app/shared/arb-project.model';
 
 
 @Component({
@@ -35,32 +30,6 @@ export class PreselectComponent implements OnInit {
   files = new Array<File>();
   FilesToRemove = new Array<File>();
   try: File = null;
-  _albums = [];
-  title = 'angulartoastr';
-  showModal: boolean;
-  myurl:string;
-  show(url)
-  {
-    this.showModal = true; // Show-Hide Modal Check
-    this.myurl = url;
-  }
-  //Bootstrap Modal Close event
-  hide()
-  {
-    this.showModal = false;
-  }
-  
-  onCreateProduct() {
-    this.createProduct = true;
-    this.message = '';
-  }
-
-  onProductSubmit(data) {
-    this.createProduct = false;
-    this.message = data.message;
-    // console.log(this.message)
-  }
-
   constructor(public service: ArbProjectService, private http: HttpClient, private sanitizer: DomSanitizer) {
     
    }
@@ -72,8 +41,6 @@ export class PreselectComponent implements OnInit {
       this.retrievedImage = 'data:image/jpeg;base64,' + file;
       this.urls.push(this.retrievedImage);
       }
-    }, err => {
-      console.log(err);
     });
 
   }
@@ -99,20 +66,15 @@ export class PreselectComponent implements OnInit {
   }
   OnSubmitImage(Image) {
     for (this.file of this.files) {
-      // console.log(this.file)
       this.postFile(this.file).subscribe(data => { 
-        // console.log(data)
        });
-
     }
-    // this.postFile(this.fileToUpload).subscribe(data=>{console.log(data)});
   }
 
   postFile(fileToUpload: File) {
     const endpoint = 'http://localhost:57645/api/image';
     const formData: FormData = new FormData();
     formData.append('Image', fileToUpload, `${this.service.examDataId}`);
-
     return this.http
       .post(endpoint, formData);
   }
@@ -120,15 +82,10 @@ export class PreselectComponent implements OnInit {
 
 
   private deleteImage(url: any, i: number, event): void {
-    // console.log(i)
-    // if (url.length > 10000) {
       this.urls = this.urls.filter((a) => a !== url);
       this.files = this.files.filter((a) => a !== this.files[i]);
       this.http.delete(`http://localhost:57645/api/image/${this.service.examDataId}/${i}`).subscribe(res => {
-        // console.log(res)
       })
-    // }
-
   }
 
 
@@ -141,11 +98,7 @@ export class PreselectComponent implements OnInit {
         console.log("data",data)
         console.log("res",res)
         this.resetForm(form, data);
-      },
-      err => {
-        console.log(err);
-      }
-    )
+      })
   }
   resetForm(form: NgForm, data: string) {
     form.form.reset();
@@ -156,26 +109,3 @@ export class PreselectComponent implements OnInit {
   }
 
 }
-
-
-
-
-
-  // addTab(selectAfterAdding: boolean) {
-
-  //   if(this.tabtitle != ''){
-  //       this.tabs.push(this.tabtitle);
-  //   }else{
-  //       this.tabs.push('New');
-  //   }
-
-  //   this.tabtitle = '';
-
-  //   if (selectAfterAdding) {
-  //     this.selected.setValue(this.tabs.length - 1);
-  //   }
-  // }
-
-  // removeTab(index: number) {
-  //   this.tabs.splice(index, 1);
-  // }
