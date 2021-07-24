@@ -16,10 +16,8 @@ export class UserProfileComponent implements OnInit {
   OnSubmit(form:NgForm,data:string){
     this.service.Put(data).subscribe(
       res=>{
-        console.log(res)
       },
       err=>{
-        console.log(err);
       }
   );
   }

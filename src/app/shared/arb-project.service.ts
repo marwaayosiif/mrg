@@ -18,11 +18,12 @@ export class ArbProjectService {
       'Access-Control-Allow-Origin':'*'
     })
   };
-  // http://localhost:57645/
-  // http://localhost:57645/
-  readonly APIUrl = 'http://localhost:57645/api';
-  readonly ComboUrl = 'http://localhost:57645/api/combobox';
-  readonly  examDataUrl = 'http://localhost:57645/api/ExamData';
+  // https://mrgs.azurewebsites.net/
+  // https://mrgs.azurewebsites.net/
+  // https://mrgs.azurewebsites.net/
+  readonly APIUrl = 'https://mrgs.azurewebsites.net/api';
+  readonly ComboUrl = 'https://mrgs.azurewebsites.net/api/combobox';
+  readonly  examDataUrl = 'https://mrgs.azurewebsites.net/api/ExamData';
   
   examDataId:number = 0;
   PatientId:number = 0;
@@ -63,7 +64,6 @@ export class ArbProjectService {
   }
   Post(APIUrl){
     let variableName = this.whichVar(APIUrl);
-    console.log(variableName);
     return(this.http.post(`${this.APIUrl}/${APIUrl}`,variableName));
 
   }
