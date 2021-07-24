@@ -22,7 +22,7 @@ export class TableListComponent implements OnInit {
     
   }
   open(content1,content2,patientname:number) {
-    this.http.get(`http://localhost:57645/api/report/${patientname}`).subscribe(res=> {
+    this.http.get(`https://mrgs.azurewebsites.net/api/report/${patientname}`).subscribe(res=> {
       var retrievedImage = 'data:image/jpeg;base64,' + res;
       if (res != "Not Found"){
         this.pdfScr = retrievedImage

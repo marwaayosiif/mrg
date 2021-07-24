@@ -48,7 +48,7 @@ export class ReportComponent implements OnInit {
       }
       if(cond === 'export')
       {
-        this.http.post("http://localhost:57645/api/report",formData).subscribe(res=> res);
+        this.http.post("https://mrgs.azurewebsites.net/api/report",formData).subscribe(res=> res);
       }
     });
   }

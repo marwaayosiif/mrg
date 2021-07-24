@@ -35,7 +35,7 @@ export class PreselectComponent implements OnInit {
    }
    retrievedImage:any
   ngOnInit(): void {
-    this.http.get(`http://localhost:57645/api/image/${this.service.examDataId}`).subscribe(res => {
+    this.http.get(`https://mrgs.azurewebsites.net/api/image/${this.service.examDataId}`).subscribe(res => {
       for(var file of res as Array<string> )
       {
       this.retrievedImage = 'data:image/jpeg;base64,' + file;
@@ -72,7 +72,7 @@ export class PreselectComponent implements OnInit {
   }
 
   postFile(fileToUpload: File) {
-    const endpoint = 'http://localhost:57645/api/image';
+    const endpoint = 'https://mrgs.azurewebsites.net/api/image';
     const formData: FormData = new FormData();
     formData.append('Image', fileToUpload, `${this.service.examDataId}`);
     return this.http
@@ -84,7 +84,7 @@ export class PreselectComponent implements OnInit {
   private deleteImage(url: any, i: number, event): void {
       this.urls = this.urls.filter((a) => a !== url);
       this.files = this.files.filter((a) => a !== this.files[i]);
-      this.http.delete(`http://localhost:57645/api/image/${this.service.examDataId}/${i}`).subscribe(res => {
+      this.http.delete(`https://mrgs.azurewebsites.net/api/image/${this.service.examDataId}/${i}`).subscribe(res => {
       })
   }
 
@@ -95,8 +95,6 @@ export class PreselectComponent implements OnInit {
 
     this.service.Post(data).subscribe(
       res => {
-        console.log("data",data)
-        console.log("res",res)
         this.resetForm(form, data);
       })
   }
